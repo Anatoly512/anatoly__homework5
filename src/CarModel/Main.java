@@ -7,6 +7,9 @@ public class Main {
 System.out.println(DataReader.readIntNumber());
 System.out.println(DataReader.readDoubleNumber());
 
+      CarControl car = new CarControl();
+      car.carLaunch();
+
 
     }
 

@@ -72,11 +72,19 @@ public class DataReader {
 
         //  Округляем до двух цифр после запятой
 
-        double roundDouble = Math.pow(10, 2);
-        doubleNumber = Math.round(doubleNumber * roundDouble) / roundDouble;
-
+        doubleNumber = aRoundDouble(doubleNumber, 2);
 
        return doubleNumber;
+    }
+
+
+    public static double aRoundDouble (double number, int decimalPlace) {
+        double doubleRound = number;
+
+        double roundDouble = Math.pow(10, 2);
+        doubleRound = Math.round(doubleRound * roundDouble) / roundDouble;
+
+        return doubleRound;
     }
 
 }
