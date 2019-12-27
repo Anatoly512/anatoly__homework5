@@ -81,7 +81,7 @@ public class DataReader {
     public static double aRoundDouble (double number, int decimalPlace) {
         double doubleRound = number;
 
-        double roundDouble = Math.pow(10, 2);
+        double roundDouble = Math.pow(10, decimalPlace);
         doubleRound = Math.round(doubleRound * roundDouble) / roundDouble;
 
         return doubleRound;
