@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class DataReader {
 
-    public static int readNumber () {
+    public static int readIntNumber () {
         boolean trigger = true;
         int number = 0;
         String numberInputString = "";
@@ -24,10 +24,10 @@ public class DataReader {
         return number;
     }
 
-    public static float readFloatNumber () {
+    public static double readDoubleNumber () {
         int a = 0;
-        float floatNumber = 0f;
-        boolean floatTrue = false;
+        double doubleNumber = 0f;
+        boolean doubleTrue = false;
         boolean trigger = true;
         boolean trigger2 = false;
         String numberInputString = "";
@@ -42,8 +42,8 @@ public class DataReader {
                 }
                 catch (NumberFormatException | NullPointerException nfe) {
                     try {
-                        floatNumber = Float.parseFloat(numberInputString);
-                        floatTrue = true;
+                        doubleNumber = Double.parseDouble(numberInputString);
+                        doubleTrue = true;
                     }
                     catch (NumberFormatException | NullPointerException n) {
                         System.out.println(Message.WRONG_DURING_INPUT);
@@ -61,8 +61,22 @@ public class DataReader {
         } while (trigger | trigger2);
 
 
-       return floatNumber;
-    }
+        //  Если пользователь ввел обычное число (без точки),
+        //  явно приводим его к типу Double
 
+        if (doubleTrue) {
+        }
+        else {
+                doubleNumber  = (double) a;
+             }
+
+        //  Округляем до двух цифр после запятой
+
+        double roundDouble = Math.pow(10, 2);
+        doubleNumber = Math.round(doubleNumber * roundDouble) / roundDouble;
+
+
+       return doubleNumber;
+    }
 
 }
