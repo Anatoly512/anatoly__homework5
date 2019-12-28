@@ -2,21 +2,20 @@ package CarModel;
 
 public class CarControl {
 
-    boolean isOpenDoor;
-    boolean isOpenWindow;
-    String StatusDoor;
-    String StatusWindow;
+    private boolean isOpenDoor;
+    private boolean isOpenWindow;
+    private String StatusDoor;
+    private String StatusWindow;
 
     CarControl () {
-        System.out.println("CONSTRUCTOR  !");
     }
 
     public void carLaunch() {
 
-        setStatusDoor();
-        setStatusWindow();
+        chooseStatusDoor();
+        chooseStatusWindow();
 
-
+    //  Test output string
         System.out.println("\nStatus  DOORS  :  " + StatusDoor);
         System.out.println("Status  WINDOWS  :  " + StatusWindow);
 
@@ -24,8 +23,18 @@ public class CarControl {
      // CarDoor door = new CarDoor();
         CarDoor door = new CarDoor(isOpenDoor, isOpenWindow);
 
-        System.out.println("\nStatus  this  DOOR  :  " + door.isOpenDoor);
-        System.out.println("Status  this  WINDOW  :  " + door.isOpenWindow);
+    //  Проверка работы геттеров
+        if (door.getStatusDoor()) {
+            StatusDoor = Message.STATUS_OPEN;
+        } else StatusDoor = Message.STATUS_CLOSED;
+
+        if (door.getStatusWindow()) {
+            StatusWindow = Message.STATUS_OPEN;
+        } else StatusWindow = Message.STATUS_CLOSED;
+
+    //  Test output string
+        System.out.println("\nStatus  this  DOOR  :  " + StatusDoor);
+        System.out.println("Status  this  WINDOW  :  " + StatusWindow);
 
 
     }
@@ -48,7 +57,7 @@ public class CarControl {
     }
 
 
-    private void setStatusDoor() {
+    private void chooseStatusDoor() {
         System.out.println(Message.INPUT_DOORS);
         System.out.print(Message.INPUT_OPEN_CLOSED);
 
@@ -64,7 +73,7 @@ public class CarControl {
     }
 
 
-    private void setStatusWindow() {
+    private void chooseStatusWindow() {
         System.out.println(Message.INPUT_WINDOWS);
         System.out.print(Message.INPUT_OPEN_CLOSED);
 
