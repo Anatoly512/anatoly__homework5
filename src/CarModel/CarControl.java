@@ -23,7 +23,7 @@ public class CarControl {
      // CarDoor door = new CarDoor();
         CarDoor door = new CarDoor(isOpenDoor, isOpenWindow);
 
-    //  Проверка работы геттеров
+    //  Проверка работы геттеров и сеттеров
         if (door.getStatusDoor()) {
             StatusDoor = Message.STATUS_OPEN;
         } else StatusDoor = Message.STATUS_CLOSED;
