@@ -25,8 +25,8 @@ public class DataReader {
     }
 
     public static double readDoubleNumber () {
-        int a = 0;
-        double doubleNumber = 0f;
+        int number = 0;
+        double doubleNumber = 0;
         boolean doubleTrue = false;
         boolean trigger = true;
         boolean trigger2 = false;
@@ -38,7 +38,7 @@ public class DataReader {
                 numberInputString = scanner.next();
                 trigger2 = false;
                 try {
-                    a = Integer.parseInt(numberInputString);
+                    number = Integer.parseInt(numberInputString);
                 }
                 catch (NumberFormatException | NullPointerException nfe) {
                     try {
@@ -67,7 +67,7 @@ public class DataReader {
         if (doubleTrue) {
         }
         else {
-                doubleNumber  = (double) a;
+                doubleNumber  = (double) number;
              }
 
         //  Округляем до двух цифр после запятой
