@@ -57,4 +57,38 @@ public class CarDoor {
     }
 
 
+    public void openTheDoor() {
+
+    }
+
+    public void closeTheDoor() {
+
+    }
+
+    public void openOrCloseTheDoor() {
+
+    }
+
+
+    public void openTheWindow() {
+
+    }
+
+    public void closeTheWindow() {
+
+    }
+
+    public void openOrCloseTheWindow() {
+
+    }
+
+
+    public void showStatusTheDoorAndTheWindow(int number) {
+
+        System.out.println("\nStatus  DOOR  № " + (number+1) + "  :  " + getStringStatusDoor());
+        System.out.println("Status  WINDOW  № " + (number+1) + "  :  " + getStringStatusWindow());
+
+    }
+
+
 }

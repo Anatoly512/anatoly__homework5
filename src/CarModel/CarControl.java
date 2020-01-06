@@ -53,18 +53,20 @@ public class CarControl {
 
 
         //  Проверка работы геттеров и сеттеров
-            String StatusDoor;
-            String StatusWindow;
+        //  String StatusDoor;
+        //  String StatusWindow;
 
         for (int i = 0; i < numberOfDoors;  i++) {
 
-            StatusDoor = door[i].getStringStatusDoor();
-            StatusWindow = door[i].getStringStatusWindow();
+          //  StatusDoor = door[i].getStringStatusDoor();
+          //  StatusWindow = door[i].getStringStatusWindow();
 
 
          //  Test output string
-             System.out.println("\nStatus  DOOR  № " + (i+1) + "  :  " + StatusDoor);
-             System.out.println("Status  WINDOW  № " + (i+1) + "  :  " + StatusWindow);
+         //  System.out.println("\nStatus  DOOR  № " + (i+1) + "  :  " + StatusDoor);
+         //  System.out.println("Status  WINDOW  № " + (i+1) + "  :  " + StatusWindow);
+
+            door[i].showStatusTheDoorAndTheWindow(i);
 
         }
 
