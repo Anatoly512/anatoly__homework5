@@ -27,10 +27,12 @@ public class CarControl {
                     System.out.println("So, we set one door especially for you.  It's a present :)))  Don't thank! \n");
                     numberOfDoors = 1;
                 } else {
-                    System.out.println(Message.ARE_YOU_SURE);
-                    System.out.println("We couldn't even imagine such a car!!!");
-                    System.out.println("So, only for you, we set one door.  It would be a sport car! :))  Don't thank! \n");
-                    numberOfDoors = 1;
+                    if (numberOfDoors < 0) {
+                        System.out.println(Message.ARE_YOU_SURE);
+                        System.out.println("We couldn't even imagine such a car!!!");
+                        System.out.println("So, only for you, we set one door.  It would be a sport car! :))  Don't thank! \n");
+                        numberOfDoors = 1;
+                    }
                 }
             }
 
@@ -52,6 +54,9 @@ public class CarControl {
 
 
         //  Проверка работы геттеров и сеттеров
+            String StatusDoor;
+            String StatusWindow;
+
         for (int i = 0; i < numberOfDoors;  i++) {
 
             //   if (door[i].getStatusDoor()) {
@@ -62,8 +67,8 @@ public class CarControl {
             //    StatusWindow = Message.STATUS_OPEN;
             //   } else StatusWindow = Message.STATUS_CLOSED;
 
-            String StatusDoor = door[i].getStringStatusDoor();
-            String StatusWindow = door[i].getStringStatusWindow();
+            StatusDoor = door[i].getStringStatusDoor();
+            StatusWindow = door[i].getStringStatusWindow();
 
 
          //  Test output string
