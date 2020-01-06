@@ -38,12 +38,15 @@ public class CarControl {
 
         CarDoor[] door = new CarDoor[numberOfDoors];
 
+            //  Заполнение массива дверей и окон
+
         for (int i = 0; i < numberOfDoors;  i++) {
 
             chooseStatusDoor(i);
             chooseStatusWindow(i);
 
             door[i] = new CarDoor(isOpenDoor, isOpenWindow);
+
         }
 
 
