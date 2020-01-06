@@ -34,6 +34,7 @@ public class CarDoor {
         return isOpenWindow;
     }
 
+
     public String getStringStatusDoor() {
         return StatusDoor;
     }
@@ -42,12 +43,14 @@ public class CarDoor {
         return StatusWindow;
     }
 
+
     public void setStatusDoor(boolean openDoor) {
         this.isOpenDoor = openDoor;
 
         if (this.isOpenDoor) {this.StatusDoor = Message.STATUS_OPEN;}
         else this.StatusDoor = Message.STATUS_CLOSED;
     }
+
 
     public void setStatusWindow(boolean openWindow) {
         this.isOpenWindow = openWindow;
