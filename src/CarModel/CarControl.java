@@ -4,55 +4,79 @@ public class CarControl {
 
     private boolean isOpenDoor;
     private boolean isOpenWindow;
-    private String StatusDoor;
-    private String StatusWindow;
 
     CarControl () {
     }
 
     public void carLaunch() {
 
-         CarDoor[] door = new CarDoor[4];
+        int numberOfDoors;
 
-      for (int i = 0; i < 4;  i++) {
-         chooseStatusDoor(i);
-         chooseStatusWindow(i);
+        System.out.print("Введите число дверей в автомобиле : ");
+        numberOfDoors = DataReader.readIntNumber();
+        System.out.println();
 
-         //  Test output string
-         //  System.out.println("\nStatus  DOORS  :  " + StatusDoor);
-         //  System.out.println("Status  WINDOWS  :  " + StatusWindow);
-
-
-         door[i] = new CarDoor(isOpenDoor, isOpenWindow);
-      }
-
-
-        for (int i = 0; i < 4;  i++) {
-
-            //  Проверка работы геттеров и сеттеров
-            if (door[i].getStatusDoor()) {
-                StatusDoor = Message.STATUS_OPEN;
-            } else StatusDoor = Message.STATUS_CLOSED;
-
-            if (door[i].getStatusWindow()) {
-                StatusWindow = Message.STATUS_OPEN;
-            } else StatusWindow = Message.STATUS_CLOSED;
+            if (numberOfDoors > 10) {
+                System.out.println(Message.ARE_YOU_SURE);
+                System.out.println("It's too much.  We set only 10 doors and went to drink coffee :))) \n");
+                numberOfDoors = 10;
+            } else {
+                if (numberOfDoors == 0) {
+                    System.out.println(Message.ARE_YOU_SURE);
+                    System.out.println("Can you imagine a car without doors?  How you get inside it?");
+                    System.out.println("So, we set one door especially for you.  It's a present :)))  Don't thank! \n");
+                    numberOfDoors = 1;
+                } else {
+                    System.out.println(Message.ARE_YOU_SURE);
+                    System.out.println("We couldn't even imagine such a car!!!");
+                    System.out.println("So, only for you, we set one door.  It would be a sport car! :))  Don't thank! \n");
+                    numberOfDoors = 1;
+                }
+            }
 
 
+        CarDoor[] door = new CarDoor[numberOfDoors];
 
-         //  Test output string
-             System.out.println("\nStatus  this  DOOR  № " + (i+1) + "  :  " + StatusDoor);
-             System.out.println("Status  this  WINDOW  № " + (i+1) + "  :  " + StatusWindow);
+        for (int i = 0; i < numberOfDoors;  i++) {
 
+            chooseStatusDoor(i);
+            chooseStatusWindow(i);
+
+            //  Test output string
+            //  System.out.println("\nStatus  DOORS  :  " + StatusDoor);
+            //  System.out.println("Status  WINDOWS  :  " + StatusWindow);
+
+            door[i] = new CarDoor(isOpenDoor, isOpenWindow);
         }
 
 
 
+        //  Проверка работы геттеров и сеттеров
+        for (int i = 0; i < numberOfDoors;  i++) {
+
+            //   if (door[i].getStatusDoor()) {
+            //    StatusDoor = Message.STATUS_OPEN;
+            //   } else StatusDoor = Message.STATUS_CLOSED;
+
+            //   if (door[i].getStatusWindow()) {
+            //    StatusWindow = Message.STATUS_OPEN;
+            //   } else StatusWindow = Message.STATUS_CLOSED;
+
+            String StatusDoor = door[i].getStringStatusDoor();
+            String StatusWindow = door[i].getStringStatusWindow();
+
+
+         //  Test output string
+             System.out.println("\nStatus  DOOR  № " + (i+1) + "  :  " + StatusDoor);
+             System.out.println("Status  WINDOW  № " + (i+1) + "  :  " + StatusWindow);
+
+
+        }
 
     }
 
 
-    private int choiceIfDoorsWindowsOpen() {
+    private int choiceIfDoorOrWindowOpen() {
         boolean trigger = true;
         int choice = 0;
 
@@ -70,32 +94,28 @@ public class CarControl {
 
 
     private void chooseStatusDoor(int number) {
-        System.out.println(Message.INPUT_DOORS + (number+1) + " : ");
+        System.out.println(Message.INPUT_DOORS + (number+1) + Message.SYMBOL_COLON);
         System.out.print(Message.INPUT_OPEN_CLOSED);
 
-        if (choiceIfDoorsWindowsOpen() == 1) {
+        if (choiceIfDoorOrWindowOpen() == 1) {
             isOpenDoor = true;
-            StatusDoor = Message.STATUS_OPEN;
         }
         else {
             isOpenDoor = false;
-            StatusDoor = Message.STATUS_CLOSED;
         }
 
     }
 
 
     private void chooseStatusWindow(int number) {
-        System.out.println(Message.INPUT_WINDOWS + (number+1) + " : ");
+        System.out.println(Message.INPUT_WINDOWS + (number+1) + Message.SYMBOL_COLON);
         System.out.print(Message.INPUT_OPEN_CLOSED);
 
-        if (choiceIfDoorsWindowsOpen() == 1) {
+        if (choiceIfDoorOrWindowOpen() == 1) {
             isOpenWindow = true;
-            StatusWindow = Message.STATUS_OPEN;
         }
         else {
             isOpenWindow = false;
-            StatusWindow = Message.STATUS_CLOSED;
         }
 
     }

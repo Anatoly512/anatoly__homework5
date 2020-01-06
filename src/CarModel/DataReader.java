@@ -16,7 +16,7 @@ public class DataReader {
                 number = Integer.parseInt(numberInputString);
                 trigger = false;
             } catch (Exception ex) {
-                System.out.println(Message.ERROR_INT_INPUT_MESSAGE);
+                System.out.print(Message.ERROR_INT_INPUT_MESSAGE);
                 trigger = true;
             }
         } while (trigger);
