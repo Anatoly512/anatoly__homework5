@@ -45,7 +45,7 @@ public class CarControl {
             chooseStatusDoor(i);    //  returns isOpenDoor
             chooseStatusWindow(i);   //  returns isOpenWindow
 
-            door[i] = new CarDoor(isOpenDoor, isOpenWindow);
+            door[i] = new CarDoor(isOpenDoor, isOpenWindow);      //  передача в конструктор параметров
 
         }
 
