@@ -11,6 +11,9 @@ public class Message {
         public static final String ERROR_NUMBER_INPUT_MESSAGE = "\nВы ввели что-то не то!  Попробуйте ввести число. \n";
         public static final String ARE_YOU_SURE = "Are you sure?";
         public static final String SYMBOL_COLON = " : ";
+        public static final String STATUS_DOOR = "\nStatus  DOOR  № ";
+        public static final String STATUS_WINDOW = "Status  WINDOW  № ";
+
 
         public static final String STATUS_OPEN = "Open";
         public static final String STATUS_CLOSED = "Closed";

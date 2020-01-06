@@ -45,48 +45,57 @@ public class CarDoor {
     public void setStatusDoor(boolean openDoor) {
         this.isOpenDoor = openDoor;
 
-        if (isOpenDoor) {this.StatusDoor = Message.STATUS_OPEN;}
+        if (this.isOpenDoor) {this.StatusDoor = Message.STATUS_OPEN;}
         else this.StatusDoor = Message.STATUS_CLOSED;
     }
 
     public void setStatusWindow(boolean openWindow) {
         this.isOpenWindow = openWindow;
 
-        if (isOpenWindow) {this.StatusWindow = Message.STATUS_OPEN;}
+        if (this.isOpenWindow) {this.StatusWindow = Message.STATUS_OPEN;}
         else this.StatusWindow = Message.STATUS_CLOSED;
     }
 
 
     public void openTheDoor() {
-
+        this.isOpenDoor = true;
+        this.StatusDoor = Message.STATUS_OPEN;
     }
 
     public void closeTheDoor() {
-
+        this.isOpenDoor = false;
+        this.StatusDoor = Message.STATUS_CLOSED;
     }
 
     public void openOrCloseTheDoor() {
-
+        boolean statusDoor = false;
+        if (!getStatusDoor()) statusDoor = true;
+        setStatusDoor(statusDoor);
     }
 
 
     public void openTheWindow() {
-
+        this.isOpenWindow  = true;
+        this.StatusWindow = Message.STATUS_OPEN;
     }
 
     public void closeTheWindow() {
-
+        this.isOpenWindow  = false;
+        this.StatusWindow = Message.STATUS_CLOSED;
     }
 
     public void openOrCloseTheWindow() {
-
+        boolean statusWindow = false;
+        if (!getStatusWindow()) statusWindow = true;
+        setStatusWindow(statusWindow);
     }
+
 
 
     public void showStatusTheDoorAndTheWindow(int number) {
 
-        System.out.println("\nStatus  DOOR  № " + (number+1) + "  :  " + getStringStatusDoor());
-        System.out.println("Status  WINDOW  № " + (number+1) + "  :  " + getStringStatusWindow());
+        System.out.println(Message.STATUS_DOOR + (number+1) + Message.SYMBOL_COLON + getStringStatusDoor());
+        System.out.println(Message.STATUS_WINDOW + (number+1) + Message.SYMBOL_COLON + getStringStatusWindow());
 
     }
 
