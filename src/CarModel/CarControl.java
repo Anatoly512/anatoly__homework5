@@ -18,7 +18,7 @@ public class CarControl {
 
             if (numberOfDoors > 10) {
                 System.out.println(Message.ARE_YOU_SURE);
-                System.out.println("It's too much.  We set only 10 doors and went to drink coffee :))) \n");
+                System.out.println("It's too much.  We set only 10 doors and went to drink coffee.  :))) \n");
                 numberOfDoors = 10;
             } else {
                 if (numberOfDoors == 0) {
@@ -28,10 +28,9 @@ public class CarControl {
                     numberOfDoors = 1;
                 } else {
                     if (numberOfDoors < 0) {
-                        System.out.println(Message.ARE_YOU_SURE);
                         System.out.println("We couldn't even imagine such a car!!!");
-                        System.out.println("So, only for you, we set one door.  It would be a sport car! :))  Don't thank! \n");
-                        numberOfDoors = 1;
+                        System.out.println("So, only for you, we set two doors.  It would be a sport car! :))  Don't thank! \n");
+                        numberOfDoors = 2;
                     }
                 }
             }
@@ -44,10 +43,6 @@ public class CarControl {
             chooseStatusDoor(i);
             chooseStatusWindow(i);
 
-            //  Test output string
-            //  System.out.println("\nStatus  DOORS  :  " + StatusDoor);
-            //  System.out.println("Status  WINDOWS  :  " + StatusWindow);
-
             door[i] = new CarDoor(isOpenDoor, isOpenWindow);
         }
 
@@ -59,14 +54,6 @@ public class CarControl {
 
         for (int i = 0; i < numberOfDoors;  i++) {
 
-            //   if (door[i].getStatusDoor()) {
-            //    StatusDoor = Message.STATUS_OPEN;
-            //   } else StatusDoor = Message.STATUS_CLOSED;
-
-            //   if (door[i].getStatusWindow()) {
-            //    StatusWindow = Message.STATUS_OPEN;
-            //   } else StatusWindow = Message.STATUS_CLOSED;
-
             StatusDoor = door[i].getStringStatusDoor();
             StatusWindow = door[i].getStringStatusWindow();
 
@@ -75,8 +62,8 @@ public class CarControl {
              System.out.println("\nStatus  DOOR  № " + (i+1) + "  :  " + StatusDoor);
              System.out.println("Status  WINDOW  № " + (i+1) + "  :  " + StatusWindow);
 
-
         }
+
 
     }
 
