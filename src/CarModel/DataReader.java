@@ -64,9 +64,7 @@ public class DataReader {
         //  Если пользователь ввел обычное число (без точки),
         //  явно приводим его к типу Double
 
-        if (doubleTrue) {
-        }
-        else {
+        if (!doubleTrue) {
                 doubleNumber  = (double) number;
              }
 

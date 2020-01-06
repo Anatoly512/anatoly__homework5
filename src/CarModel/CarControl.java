@@ -28,6 +28,7 @@ public class CarControl {
                     numberOfDoors = 1;
                 } else {
                     if (numberOfDoors < 0) {
+                        System.out.println(Message.ARE_YOU_SURE);
                         System.out.println("We couldn't even imagine such a car!!!");
                         System.out.println("So, only for you, we set two doors.  It would be a sport car! :))  Don't thank! \n");
                         numberOfDoors = 2;
