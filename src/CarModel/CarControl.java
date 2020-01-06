@@ -42,8 +42,8 @@ public class CarControl {
 
         for (int i = 0; i < numberOfDoors;  i++) {
 
-            chooseStatusDoor(i);
-            chooseStatusWindow(i);
+            chooseStatusDoor(i);    //  returns isOpenDoor
+            chooseStatusWindow(i);   //  returns isOpenWindow
 
             door[i] = new CarDoor(isOpenDoor, isOpenWindow);
 
