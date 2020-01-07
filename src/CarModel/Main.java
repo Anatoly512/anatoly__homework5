@@ -10,7 +10,7 @@ public class Main {
  //   System.out.println(DataReader.readDoubleNumber());
 
       CarControl carControlPanel = new CarControl();
-      carControlPanel.carLaunch();
+      carControlPanel.carControl();
 
 
     }
