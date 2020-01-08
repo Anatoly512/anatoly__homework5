@@ -29,15 +29,20 @@ public class CarControl {
                 }
             }
 
+
          Car car = new Car(numberOfDoors);
+
+        //Car car = new Car(numberOfDoors, "01 January, 2018");
+
          car.carLaunch();
 
         System.out.println("\nTEST STRING : ");
         // System.out.println("\nStatus Of DOOR " + car.getStatusDoor(0));
         // System.out.println("\nStatus Of WINDOW " + car.getStatusWindow(0));
         // car.showStatusDoor(0);
-        // System.out.println( car.getStringStatusDoor(i) );
-        // System.out.println( car.getStringStatusWindow(i) );
+        // System.out.println(car.getStringStatusDoor(i));
+        // System.out.println(car.getStringStatusWindow(i));
+        // System.out.println(car.getStringDateOfManufacture());
 
         for (int i = 0; i < numberOfDoors; i++) {
 

@@ -44,7 +44,7 @@ public class CarDoor {
     }
 
 
-    public void setStatusDoor(boolean openDoor) {
+    private void setStatusDoor(boolean openDoor) {
         this.isOpenDoor = openDoor;
 
         if (this.isOpenDoor) {this.StatusDoor = Message.STATUS_OPEN;}
@@ -52,7 +52,7 @@ public class CarDoor {
     }
 
 
-    public void setStatusWindow(boolean openWindow) {
+    private void setStatusWindow(boolean openWindow) {
         this.isOpenWindow = openWindow;
 
         if (this.isOpenWindow) {this.StatusWindow = Message.STATUS_OPEN;}
@@ -61,30 +61,26 @@ public class CarDoor {
 
 
     public void openTheDoor() {
-        this.isOpenDoor = true;
-        this.StatusDoor = Message.STATUS_OPEN;
+        setStatusDoor(true);
     }
 
     public void closeTheDoor() {
-        this.isOpenDoor = false;
-        this.StatusDoor = Message.STATUS_CLOSED;
+        setStatusDoor(false);
     }
+
+    public void openTheWindow() {
+        setStatusWindow(true);
+    }
+
+    public void closeTheWindow() {
+        setStatusWindow(false);
+    }
+
 
     public void openOrCloseTheDoor() {
         boolean statusDoor = false;
         if (!getStatusDoor()) statusDoor = true;
         setStatusDoor(statusDoor);
-    }
-
-
-    public void openTheWindow() {
-        this.isOpenWindow  = true;
-        this.StatusWindow = Message.STATUS_OPEN;
-    }
-
-    public void closeTheWindow() {
-        this.isOpenWindow  = false;
-        this.StatusWindow = Message.STATUS_CLOSED;
     }
 
     public void openOrCloseTheWindow() {
@@ -94,13 +90,11 @@ public class CarDoor {
     }
 
 
-
     public void showStatusTheDoorAndTheWindow(int number) {
 
         System.out.println(Message.STATUS_DOOR + (number+1) + Message.SYMBOL_COLON + getStringStatusDoor());
         System.out.println(Message.STATUS_WINDOW + (number+1) + Message.SYMBOL_COLON + getStringStatusWindow());
 
     }
-
 
 }
