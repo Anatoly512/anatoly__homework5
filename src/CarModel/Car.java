@@ -2,40 +2,48 @@ package CarModel;
 
 public class Car {
 
-    private int numberOfDoors;
     private boolean isOpenDoor;
     private boolean isOpenWindow;
+    private static int numberOfDoors;
     private final String DateOfManufacture;
+
+    CarDoor[] door;
 
 
     Car(int numberOfDoors) {
-        this.numberOfDoors = numberOfDoors;
-        this.DateOfManufacture = "Unknown";
+        Car.numberOfDoors = numberOfDoors;
+        this.DateOfManufacture = "Unknown date of manufacture";
+
+        this.door = new CarDoor[numberOfDoors];
+
     }
 
     Car(int numberOfDoors, String dateOfManufacture) {
-        this.numberOfDoors = numberOfDoors;
+        Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = dateOfManufacture;
+
+        this.door = new CarDoor[numberOfDoors];
     }
 
     Car(String dateOfManufacture) {
-        this.numberOfDoors = 4;
+        Car.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
+
+        this.door = new CarDoor[numberOfDoors];
     }
 
 
     public void carLaunch() {
 
-        CarDoor[] door = new CarDoor[numberOfDoors];
 
-        //  Заполнение массива дверей и окон
+        //  Заполнение массива дверей и окон  (пользователь назначает им статус :  закрыты или открыты)
 
         for (int i = 0; i < numberOfDoors; i++) {
 
             chooseStatusDoor(i);    //  returns isOpenDoor
             chooseStatusWindow(i);   //  returns isOpenWindow
 
-            door[i] = new CarDoor(isOpenDoor, isOpenWindow);      //  передача в конструктор дверей параметров
+            this.door[i] = new CarDoor(isOpenDoor, isOpenWindow);      //  передача в конструктор дверей параметров
 
         }
 
@@ -46,13 +54,11 @@ public class Car {
 
             //  Test output string
 
-            door[i].showStatusTheDoorAndTheWindow(i);
+            this.door[i].showStatusTheDoorAndTheWindow(i);
 
         }
 
     }
-
-
 
 
         private int choiceIfDoorOrWindowOpen () {
@@ -95,5 +101,37 @@ public class Car {
         }
 
 
+    public void showStatusDoor(int number) {
+
+        this.door[number].showStatusTheDoorAndTheWindow(number);
+
+    }
+
+
+    public boolean getStatusDoor(int number) {
+
+       return this.door[number].getStatusDoor();
+
+    }
+
+    public boolean getStatusWindow(int number) {
+
+        return this.door[number].getStatusWindow();
+
+    }
+
+    public String getStringStatusDoor(int number) {
+
+        return this.door[number].getStringStatusDoor();
+    }
+
+    public String getStringStatusWindow(int number) {
+
+        return this.door[number].getStringStatusWindow();
+
+    }
+
+
 
 }
+
