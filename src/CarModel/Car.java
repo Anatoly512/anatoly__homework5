@@ -34,14 +34,14 @@ public class Car {
     }
 
 
-    public void carLaunch() {
+        public void carLaunch() {
 
-        statusDoorsAndWindowsChoose();
+            statusDoorsAndWindowsChoose();
 
-        this.numberOfWheels = 2;
+            this.numberOfWheels = 2;
 
 
-    }
+        }
 
 
         private void wheelsCreate(int newNumberOfWheels) {
