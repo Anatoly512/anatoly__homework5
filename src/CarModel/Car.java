@@ -14,7 +14,7 @@ public class Car {
 
     Car(int numberOfDoors) {
         Car.numberOfDoors = numberOfDoors;
-        this.DateOfManufacture = "Unknown date of manufacture";
+        this.DateOfManufacture = Message.UNKNOWN_DATE;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
     }

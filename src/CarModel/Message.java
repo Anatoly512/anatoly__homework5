@@ -13,6 +13,7 @@ public class Message {
         public static final String SYMBOL_COLON = " : ";
         public static final String STATUS_DOOR = "\nStatus  DOOR  № ";
         public static final String STATUS_WINDOW = "Status  WINDOW  № ";
+        public static final String UNKNOWN_DATE = "Unknown date of manufacture";
 
 
         public static final String STATUS_OPEN = "Open";

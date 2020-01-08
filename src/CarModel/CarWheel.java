@@ -23,11 +23,12 @@ public class CarWheel {
         if (this.tireIntegrity > 1) {this.tireIntegrity = 1.00;}
     }
 
+
     public void changeTireToNewOne() {
         setTireIntegrity(1.00);
     }
 
-    public void wipeTheTire(double percentToWipeTheTire) throws Exception {
+    public void wipeTheTire(double percentToWipeTheTire) {
 
         if (percentToWipeTheTire < 0) {percentToWipeTheTire = 0.00;}
 
@@ -40,7 +41,6 @@ public class CarWheel {
 
         setTireIntegrity(percentValue);
     }
-
 
 }
 
