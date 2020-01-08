@@ -3,30 +3,34 @@ package CarModel;
 public class Car {
 
     private static int numberOfDoors;
+    private int numberOfWheels = 4;
     private boolean isOpenDoor;
     private boolean isOpenWindow;
     private final String DateOfManufacture;
 
     CarDoor[] door;
+    CarWheel[] wheel;
 
 
     Car(int numberOfDoors) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = "Unknown date of manufacture";
         this.door = new CarDoor[numberOfDoors];
-
+        this.wheel = new CarWheel[this.numberOfWheels];
     }
 
     Car(int numberOfDoors, String dateOfManufacture) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = dateOfManufacture;
         this.door = new CarDoor[numberOfDoors];
+        this.wheel = new CarWheel[this.numberOfWheels];
     }
 
     Car(String dateOfManufacture) {
         Car.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
         this.door = new CarDoor[numberOfDoors];
+        this.wheel = new CarWheel[this.numberOfWheels];
     }
 
 
@@ -34,9 +38,18 @@ public class Car {
 
         statusDoorsAndWindowsChoose();
 
+        this.numberOfWheels = 2;
 
 
     }
+
+
+        private void wheelsCreate(int newNumberOfWheels) {
+
+
+
+        }
+
 
 
         private void statusDoorsAndWindowsChoose() {
