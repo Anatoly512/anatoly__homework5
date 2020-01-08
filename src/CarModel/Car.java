@@ -38,17 +38,30 @@ public class Car {
 
             statusDoorsAndWindowsChoose();
 
-            this.numberOfWheels = 2;
+
+            wheelsCreate(5);
 
 
         }
 
 
-        private void wheelsCreate(int newNumberOfWheels) {
+        public void wheelsCreate(int newNumberOfWheels) {
+
+            if (newNumberOfWheels < 0) {newNumberOfWheels = 0;}
+            if (newNumberOfWheels > 100) {newNumberOfWheels = 100;}
+
+            if (this.numberOfWheels > newNumberOfWheels)  { }
+            else {
+                if (this.numberOfWheels < newNumberOfWheels) { }
+                else {
+                    if (newNumberOfWheels == 0) { }
+                }
+            }
 
 
 
         }
+
 
 
 
@@ -181,6 +194,10 @@ public class Car {
         this.door[number].openOrCloseTheWindow();
     }
 
+
+    public int getNumberOfWheels() {
+        return this.numberOfWheels;
+    }
 
 
 }
