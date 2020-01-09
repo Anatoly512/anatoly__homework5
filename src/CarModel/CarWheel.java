@@ -17,6 +17,7 @@ public class CarWheel {
         return this.tireIntegrity;
     }
 
+
     private void setTireIntegrity(double tireIntegrity) {
         this.tireIntegrity = tireIntegrity;
         if (this.tireIntegrity < 0) {this.tireIntegrity = 0.00;}
@@ -27,6 +28,7 @@ public class CarWheel {
     public void changeTireToNewOne() {
         setTireIntegrity(1.00);
     }
+
 
     public void wipeTheTire(double percentToWipeTheTire) {
 

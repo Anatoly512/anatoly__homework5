@@ -36,10 +36,16 @@ public class Car {
 
         public void carLaunch() {
 
-            statusDoorsAndWindowsChoose();
+            statusDoorsAndWindowsChoose();   //  определение статуса дверей и окон :  закрыты или открыты
 
 
-            wheelsChangeNumber(5);
+            for (int i = 0; i < this.numberOfWheels; i++) {
+
+                this.wheel[i] = new CarWheel();   //    создание массива колес,  конструктор пустой
+
+            }
+
+            wheelsChangeNumber(2);
 
 
         }
@@ -50,10 +56,15 @@ public class Car {
             if (newNumberOfWheels < 0) {newNumberOfWheels = 0;}
             if (newNumberOfWheels > 100) {newNumberOfWheels = 100;}
 
-            if (this.numberOfWheels > newNumberOfWheels)  {   //  убрать элементы в массиве
+            if (newNumberOfWheels < this.numberOfWheels)  {   //  убрать элементы в массиве
+
+
+
+
                  }
+
             else {
-                if (this.numberOfWheels < newNumberOfWheels) {  //  добавить элементы в массиве
+                if (newNumberOfWheels > this.numberOfWheels) {  //  добавить элементы в массиве
 
                 }
                 else {
@@ -202,6 +213,17 @@ public class Car {
         return this.numberOfWheels;
     }
 
+    public double getTireIntegrity(int number) {
+        return this.wheel[number].getTireIntegrity();
+    }
+
+    public void changeTireToNewOne(int number) {
+        this.wheel[number].changeTireToNewOne();
+    }
+
+    public void wipeTheTire(int number, double percentToWipeTheTire) {
+        this.wheel[number].wipeTheTire(percentToWipeTheTire);
+    }
 
 }
 
