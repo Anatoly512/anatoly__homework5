@@ -39,20 +39,23 @@ public class Car {
             statusDoorsAndWindowsChoose();
 
 
-            wheelsCreate(5);
+            wheelsChangeNumber(5);
 
 
         }
 
 
-        public void wheelsCreate(int newNumberOfWheels) {
+        public void wheelsChangeNumber(int newNumberOfWheels) {
 
             if (newNumberOfWheels < 0) {newNumberOfWheels = 0;}
             if (newNumberOfWheels > 100) {newNumberOfWheels = 100;}
 
-            if (this.numberOfWheels > newNumberOfWheels)  { }
+            if (this.numberOfWheels > newNumberOfWheels)  {   //  убрать элементы в массиве
+                 }
             else {
-                if (this.numberOfWheels < newNumberOfWheels) { }
+                if (this.numberOfWheels < newNumberOfWheels) {  //  добавить элементы в массиве
+
+                }
                 else {
                     if (newNumberOfWheels == 0) { }
                 }
