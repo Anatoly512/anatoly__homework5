@@ -38,7 +38,7 @@ public class CarControl {
 
          car.carLaunch();
 
-        System.out.println("\nTEST STRING : ");
+        // System.out.println("\nTEST STRING : ");
         // System.out.println("\nStatus Of DOOR " + car.getStatusDoor(0));
         // System.out.println("\nStatus Of WINDOW " + car.getStatusWindow(0));
         // car.showStatusDoor(0);
@@ -46,13 +46,35 @@ public class CarControl {
         // System.out.println(car.getStringStatusWindow(i));
         // System.out.println(car.getStringDateOfManufacture());
 
-        for (int i = 0; i < numberOfDoors; i++) {
+        System.out.println("\nTest WHEEL String !");
+        int numberOfWheels = car.getNumberOfWheels();
+        System.out.print("\nNumber of wheels : " + numberOfWheels);
+        car.wipeTheWheelTire(0, 0.10);
+        car.wipeTheWheelTire(1, 0.20);
+        car.wipeTheWheelTire(2, 0.30);
 
+        for (int i = 0; i < numberOfWheels; i++) {
 
-
+            System.out.print("\nStatus of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
         }
 
+        car.setNumberOfWheels(2);
+        numberOfWheels = car.getNumberOfWheels();
+        System.out.print("\nNew number of wheels : " + numberOfWheels);
 
+        for (int i = 0; i < numberOfWheels; i++) {
+          System.out.print("\nNew status of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
+        }
+
+        car.setNumberOfWheels(5);
+        numberOfWheels = car.getNumberOfWheels();
+        System.out.print("\nNew number of wheels : " + numberOfWheels);
+
+        for (int i = 0; i < numberOfWheels; i++) {
+            System.out.print("\nNew status of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
+        }
+
+        System.out.println();
 
 
     }

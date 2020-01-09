@@ -45,34 +45,49 @@ public class Car {
 
             }
 
-            wheelsChangeNumber(2);
-
-
         }
 
 
-        public void wheelsChangeNumber(int newNumberOfWheels) {
+        private void wheelsChangeNumber(int newNumberOfWheels) {
 
             if (newNumberOfWheels < 0) {newNumberOfWheels = 0;}
             if (newNumberOfWheels > 100) {newNumberOfWheels = 100;}
 
+            CarWheel[] wheel = new CarWheel[this.numberOfWheels];    //  Создание резервной копии массива колес
+
+            for (int i = 0; i < this.numberOfWheels; i++) {
+                wheel[i] = this.wheel[i];                     //  Заполнение резервной копии из основного массива колес
+            }
+
+            this.wheel = new CarWheel[newNumberOfWheels];    //  Переинициализация массива колес, нового размера
+
+
             if (newNumberOfWheels < this.numberOfWheels)  {   //  убрать элементы в массиве
 
+                for (int i = 0; i < newNumberOfWheels; i++) {
 
-
-
-                 }
-
-            else {
-                if (newNumberOfWheels > this.numberOfWheels) {  //  добавить элементы в массиве
+                    this.wheel[i] = new CarWheel();   //    создание нового массива колес (меньшего размера)
+                    this.wheel[i] = wheel[i];         //    заполнение значением из ранее созданной копии
 
                 }
-                else {
-                    if (newNumberOfWheels == 0) { }
+
+            }
+
+            else {
+
+                if (newNumberOfWheels > this.numberOfWheels) {  //  добавить элементы в массиве
+
+                    for (int i = 0; i < newNumberOfWheels; i++) {
+
+                        this.wheel[i] = new CarWheel();   //    создание нового массива колес (большего размера)
+                        if (i < this.numberOfWheels) {
+                            this.wheel[i] = wheel[i];     //    заполнение значением из ранее созданной копии
+                        }
+                    }
                 }
             }
 
-
+            this.numberOfWheels = newNumberOfWheels;    //  новое количество колес сохранено
 
         }
 
@@ -213,17 +228,28 @@ public class Car {
         return this.numberOfWheels;
     }
 
-    public double getTireIntegrity(int number) {
+    public double getWheelTireIntegrity(int number) {
         return this.wheel[number].getTireIntegrity();
     }
 
-    public void changeTireToNewOne(int number) {
+    public void changeWheelTireToNewOne(int number) {
         this.wheel[number].changeTireToNewOne();
     }
 
-    public void wipeTheTire(int number, double percentToWipeTheTire) {
+    public void wipeTheWheelTire(int number, double percentToWipeTheTire) {
         this.wheel[number].wipeTheTire(percentToWipeTheTire);
     }
+
+    public void setNumberOfWheels(int number) {
+
+        if (number < 0) {number = 0;}
+        if (number > 100) {number = 100;}
+
+        wheelsChangeNumber(number);
+
+    }
+
+
 
 }
 
