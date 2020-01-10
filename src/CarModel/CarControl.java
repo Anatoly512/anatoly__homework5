@@ -38,13 +38,19 @@ public class CarControl {
 
          car.carLaunch();
 
-        // System.out.println("\nTEST STRING : ");
-        // System.out.println("\nStatus Of DOOR " + car.getStatusDoor(0));
-        // System.out.println("\nStatus Of WINDOW " + car.getStatusWindow(0));
-        // car.showStatusDoor(0);
-        // System.out.println(car.getStringStatusDoor(i));
-        // System.out.println(car.getStringStatusWindow(i));
-        // System.out.println(car.getStringDateOfManufacture());
+    //  Проверка работы массива колес
+    //  testWheel();
+
+
+
+
+
+    }
+
+
+    public void testWheel() {
+
+        /*      Проверка работы массива колес
 
         System.out.println("\nTest WHEEL String !");
         int numberOfWheels = car.getNumberOfWheels();
@@ -52,6 +58,7 @@ public class CarControl {
         car.wipeTheWheelTire(0, 0.10);
         car.wipeTheWheelTire(1, 0.20);
         car.wipeTheWheelTire(2, 0.30);
+        car.wipeTheWheelTire(3, 67);
 
         for (int i = 0; i < numberOfWheels; i++) {
 
@@ -74,7 +81,7 @@ public class CarControl {
             System.out.print("\nNew status of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
         }
 
-        System.out.println();
+     */
 
 
     }

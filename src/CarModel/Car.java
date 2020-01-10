@@ -236,7 +236,11 @@ public class Car {
         this.wheel[number].changeTireToNewOne();
     }
 
-    public void wipeTheWheelTire(int number, double percentToWipeTheTire) {
+    public void wipeTheWheelTire(int number, double ValueToWipeTheTire) {
+        this.wheel[number].wipeTheTire(ValueToWipeTheTire);
+    }
+
+    public void wipeTheWheelTire(int number, int percentToWipeTheTire) {
         this.wheel[number].wipeTheTire(percentToWipeTheTire);
     }
 

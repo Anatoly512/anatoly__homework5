@@ -19,9 +19,12 @@ public class CarWheel {
 
 
     private void setTireIntegrity(double tireIntegrity) {
+        tireIntegrity = DataReader.aRoundDouble(tireIntegrity, 2);        //  Округлить до 2-х знаков после запятой
+
+        if (tireIntegrity < 0) {tireIntegrity = 0.00;}
+        if (tireIntegrity > 1) {tireIntegrity = 1.00;}
+
         this.tireIntegrity = tireIntegrity;
-        if (this.tireIntegrity < 0) {this.tireIntegrity = 0.00;}
-        if (this.tireIntegrity > 1) {this.tireIntegrity = 1.00;}
     }
 
 
@@ -30,11 +33,12 @@ public class CarWheel {
     }
 
 
-    public void wipeTheTire(double percentToWipeTheTire) {
+    public void wipeTheTire(double ValueDoubleToWipeTheTire) {
 
-        if (percentToWipeTheTire < 0) {percentToWipeTheTire = 0.00;}
+        if (ValueDoubleToWipeTheTire < 0) {ValueDoubleToWipeTheTire = 0.00;}
+        if (ValueDoubleToWipeTheTire > 1) {ValueDoubleToWipeTheTire = 1.00;}
 
-        double percentValue = (getTireIntegrity() - percentToWipeTheTire);
+        double percentValue = (getTireIntegrity() - ValueDoubleToWipeTheTire);
 
         if (percentValue < 0) {percentValue = 0.00;}
         else {
@@ -43,6 +47,26 @@ public class CarWheel {
 
         setTireIntegrity(percentValue);
     }
+
+
+    public void wipeTheTire(int percentToWipeTheTire) {
+
+        if (percentToWipeTheTire < 0) {percentToWipeTheTire = 0;}
+        if (percentToWipeTheTire > 100) {percentToWipeTheTire = 100;}
+
+        double percentValue = (double) percentToWipeTheTire / 100;
+
+        percentValue = (getTireIntegrity() - percentValue);
+
+        if (percentValue < 0) {percentValue = 0.00;}
+        else {
+            if (percentValue > 1) {percentValue = 1.00;}
+        }
+
+        setTireIntegrity(percentValue);
+    }
+
+
 
 }
 
