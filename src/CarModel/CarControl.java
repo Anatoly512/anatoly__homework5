@@ -32,9 +32,11 @@ public class CarControl {
 
         Car car = new Car(numberOfDoors);
 
-    //  Car car = new Car("2018");
+    // Car car = new Car("01 January, 2018");
 
-    // Car car = new Car(numberOfDoors, "01 January, 2018");
+    // Car car = new Car(numberOfDoors, 10, Message.ENGINE_SPORTCAR);
+
+    // Car car = new Car(numberOfDoors, "01 January, 2018", 5, Message.ENGINE_USUAL);
 
          car.carLaunch();
 
@@ -48,9 +50,9 @@ public class CarControl {
     }
 
 
-    public void testWheel() {
+/*    Проверка работы массива колес
 
-        /*      Проверка работы массива колес
+    public void testWheel() {
 
         System.out.println("\nTest WHEEL String !");
         int numberOfWheels = car.getNumberOfWheels();
@@ -81,10 +83,9 @@ public class CarControl {
             System.out.print("\nNew status of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
         }
 
-     */
-
-
     }
+       */
+
 
 }
 

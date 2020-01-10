@@ -4,6 +4,9 @@ public class Car {
 
     private static int numberOfDoors;
     private int numberOfWheels = 4;
+    private int passangerCapacity;
+    private int currentNumberOfPassangers = 1;
+    private String EngineType;
     private boolean isOpenDoor;
     private boolean isOpenWindow;
     private final String DateOfManufacture;
@@ -15,13 +18,26 @@ public class Car {
     Car(int numberOfDoors) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = Message.UNKNOWN_DATE;
+        this.passangerCapacity = 10;
+        this.EngineType = Message.ENGINE_USUAL;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
     }
 
-    Car(int numberOfDoors, String dateOfManufacture) {
+    Car(int numberOfDoors, String dateOfManufacture, int passangerCapacity, String EngineType) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = dateOfManufacture;
+        this.passangerCapacity = passangerCapacity;
+        this.EngineType = EngineType;
+        this.door = new CarDoor[numberOfDoors];
+        this.wheel = new CarWheel[this.numberOfWheels];
+    }
+
+    Car(int numberOfDoors, int passangerCapacity, String EngineType) {
+        Car.numberOfDoors = numberOfDoors;
+        this.DateOfManufacture = Message.UNKNOWN_DATE;
+        this.passangerCapacity = passangerCapacity;
+        this.EngineType = EngineType;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
     }
@@ -29,6 +45,8 @@ public class Car {
     Car(String dateOfManufacture) {
         Car.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
+        this.passangerCapacity = 5;
+        this.EngineType = Message.ENGINE_SPORTCAR;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
     }
@@ -44,6 +62,7 @@ public class Car {
                 this.wheel[i] = new CarWheel();   //    создание массива колес,  конструктор пустой
 
             }
+
 
         }
 
@@ -252,6 +271,40 @@ public class Car {
         wheelsChangeNumber(number);
 
     }
+
+
+    public int getCurrentNumberOfPassangers() {
+        return this.currentNumberOfPassangers;
+    }
+
+    public int getPassangerCapacity() {
+        return this.passangerCapacity;
+    }
+
+    public void setPassangerCapacity (int passangerCapacity) {
+        this.passangerCapacity = passangerCapacity;
+    }
+
+
+    public boolean addOnePassenger() {
+        if (this.currentNumberOfPassangers == this.passangerCapacity) {return false;}
+
+        this.currentNumberOfPassangers++;
+        return true;
+    }
+
+    public void subOnePassenger() {
+        this.currentNumberOfPassangers--;
+        if  (this.currentNumberOfPassangers < 0) {this.currentNumberOfPassangers = 0;}
+    }
+
+    public void subAllPassengers() {
+        this.currentNumberOfPassangers = 0;
+    }
+
+
+
+
 
 
 

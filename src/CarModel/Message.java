@@ -15,6 +15,9 @@ public class Message {
         public static final String STATUS_WINDOW = "Status  WINDOW  № ";
         public static final String UNKNOWN_DATE = "Unknown date of manufacture";
 
+        public static final String ENGINE_USUAL = "V8";
+        public static final String ENGINE_SPORTCAR = "Ferrari 056 2,4 V8";
+        public static final String ENGINE_TANK = "MTU MB 873";
 
         public static final String STATUS_OPEN = "Open";
         public static final String STATUS_CLOSED = "Closed";
