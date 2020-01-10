@@ -44,8 +44,13 @@ public class CarControl {
     //  testWheel();
 
 
-
-
+        System.out.println("\nTest SPEED String !\n");
+        System.out.println("Max Speed :  " + car.getMaxSpeed());
+        System.out.println("Current Speed :  " + car.getCurrentSpeed());
+        System.out.print("SET new CURRENT Speed :  ");
+        car.setCurrentSpeed(DataReader.readIntNumber());
+        System.out.println();
+        System.out.println("Current Speed :  " + car.getCurrentSpeed());
 
     }
 

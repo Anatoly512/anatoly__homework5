@@ -7,6 +7,10 @@ public class Car {
     private int passangerCapacity;
     private int currentNumberOfPassangers = 1;
     private String EngineType;
+    private int maxSpeed;
+    private int maxSpeedPossible;
+    private int currentSpeed;
+    private double accelerationTimeTo100km;
     private boolean isOpenDoor;
     private boolean isOpenWindow;
     private final String DateOfManufacture;
@@ -22,6 +26,20 @@ public class Car {
         this.EngineType = Message.ENGINE_USUAL;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
+        {
+           if (this.EngineType.equals(Message.ENGINE_USUAL)) {
+               this.maxSpeed = 150;
+               this.accelerationTimeTo100km = 5.0;
+           }
+           else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
+               this.maxSpeed = 270;
+               this.accelerationTimeTo100km = 2.8;
+           }
+           else if (this.EngineType.equals(Message.ENGINE_TANK)) {
+               this.maxSpeed = 1000;
+               this.accelerationTimeTo100km = 0.02;
+           }
+        }
     }
 
     Car(int numberOfDoors, String dateOfManufacture, int passangerCapacity, String EngineType) {
@@ -31,6 +49,20 @@ public class Car {
         this.EngineType = EngineType;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
+        {
+            if (this.EngineType.equals(Message.ENGINE_USUAL)) {
+                this.maxSpeed = 150;
+                this.accelerationTimeTo100km = 5.0;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
+                this.maxSpeed = 270;
+                this.accelerationTimeTo100km = 2.8;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_TANK)) {
+                this.maxSpeed = 1000;
+                this.accelerationTimeTo100km = 0.02;
+            }
+        }
     }
 
     Car(int numberOfDoors, int passangerCapacity, String EngineType) {
@@ -40,15 +72,44 @@ public class Car {
         this.EngineType = EngineType;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
+        {
+            if (this.EngineType.equals(Message.ENGINE_USUAL)) {
+                this.maxSpeed = 150;
+                this.accelerationTimeTo100km = 5.0;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
+                this.maxSpeed = 270;
+                this.accelerationTimeTo100km = 2.8;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_TANK)) {
+                this.maxSpeed = 1000;
+                this.accelerationTimeTo100km = 0.02;
+            }
+        }
     }
 
     Car(String dateOfManufacture) {
         Car.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
         this.passangerCapacity = 5;
+        this.currentNumberOfPassangers = 0;   //  Машина пуста (вдруг её надо подарить, или продать), в других вариантах в ней есть водитель
         this.EngineType = Message.ENGINE_SPORTCAR;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
+        {
+            if (this.EngineType.equals(Message.ENGINE_USUAL)) {
+                this.maxSpeed = 150;
+                this.accelerationTimeTo100km = 5.0;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
+                this.maxSpeed = 270;
+                this.accelerationTimeTo100km = 2.8;
+            }
+            else if (this.EngineType.equals(Message.ENGINE_TANK)) {
+                this.maxSpeed = 1000;
+                this.accelerationTimeTo100km = 0.02;
+            }
+        }
     }
 
 
@@ -62,6 +123,8 @@ public class Car {
                 this.wheel[i] = new CarWheel();   //    создание массива колес,  конструктор пустой
 
             }
+
+            this.maxSpeedPossible = this.maxSpeed;  //  Так как шины пока все новые, то и скорость максимальная
 
 
         }
@@ -259,8 +322,8 @@ public class Car {
         this.wheel[number].wipeTheTire(ValueToWipeTheTire);
     }
 
-    public void wipeTheWheelTire(int number, int percentToWipeTheTire) {
-        this.wheel[number].wipeTheTire(percentToWipeTheTire);
+    public void wipeTheWheelTire(int number, int percentToWipeTheTire) {     //  Перегрузка, можно передавать число (насколько стереть шину)
+        this.wheel[number].wipeTheTire(percentToWipeTheTire);                //  и в виде процентов, и в виде уже готового double значения
     }
 
     public void setNumberOfWheels(int number) {
@@ -303,8 +366,69 @@ public class Car {
     }
 
 
+    public int getMaxSpeed() {
+        return this.maxSpeed;
+    }
+
+    public int getCurrentSpeed() {
+        return this.currentSpeed;
+    }
+
+    public void setCurrentSpeed(int currentSpeed) {
+
+        if (currentSpeed > this.maxSpeedPossible) {
+            currentSpeed = this.maxSpeedPossible;
+            System.out.println("Sorry,  ваш тип двигателя не позволяет разгоняться до таких скоростей");
+            System.out.println("Ваша текущая скорость (максимально возможная для вашего двигателя) : " + currentSpeed + " км/ч");
+            // Потом нужно будет заменить значение currentSpeed на get.MaxSpeedPossible()
+        }
+        if (currentSpeed < 0) {  // Здесь нужно ограничить отрицательную скорость теми же значениями
+            currentSpeed = -(currentSpeed);
+            if (currentSpeed > this.maxSpeedPossible) {
+                currentSpeed = this.maxSpeedPossible;
+            }
+            currentSpeed = -(currentSpeed);
+            System.out.println("Sorry,  ваш тип двигателя не позволяет разгоняться до таких скоростей");
+            System.out.println("Ваша текущая скорость (максимально возможная для вашего двигателя) : " + currentSpeed + " км/ч");
+
+            // Потом нужно будет заменить значение currentSpeed на get.MaxSpeedPossible()
+        }
+
+        this.currentSpeed = currentSpeed;
+
+    }
+
+    public double getAccelerationTimeTo100km() {
+        return this.accelerationTimeTo100km;
+    }
+
+    public int getMaxSpeedPossible() {    //  Здесь нужно добавить логику рассчета максимально возможной скорости
+                                          //   макс. стертая шина * maxSpeed
+        return this.maxSpeedPossible;
+    }
 
 
+    public String getEngineType() {
+        return this.EngineType;
+    }
+
+    public void setEngineType(String EngineType) {
+
+        switch (this.EngineType) {
+            case Message.ENGINE_USUAL:
+                break;
+            case Message.ENGINE_SPORTCAR:
+                break;
+            case Message.ENGINE_TANK:
+                break;
+            default: {
+                System.out.println("Какой-то незнакомый тип двигателя.  Вряд ли его удастся установить.");
+                return;
+            }
+        }
+
+        this.EngineType = EngineType;
+    }
 
 
 
