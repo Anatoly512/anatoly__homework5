@@ -29,7 +29,7 @@ public class Car {
         {
            if (this.EngineType.equals(Message.ENGINE_USUAL)) {
                this.maxSpeed = 150;
-               this.accelerationTimeTo100km = 5.0;
+               this.accelerationTimeTo100km = 5.7;
            }
            else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
                this.maxSpeed = 270;
@@ -52,7 +52,7 @@ public class Car {
         {
             if (this.EngineType.equals(Message.ENGINE_USUAL)) {
                 this.maxSpeed = 150;
-                this.accelerationTimeTo100km = 5.0;
+                this.accelerationTimeTo100km = 5.7;
             }
             else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
                 this.maxSpeed = 270;
@@ -75,7 +75,7 @@ public class Car {
         {
             if (this.EngineType.equals(Message.ENGINE_USUAL)) {
                 this.maxSpeed = 150;
-                this.accelerationTimeTo100km = 5.0;
+                this.accelerationTimeTo100km = 5.7;
             }
             else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
                 this.maxSpeed = 270;
@@ -99,7 +99,7 @@ public class Car {
         {
             if (this.EngineType.equals(Message.ENGINE_USUAL)) {
                 this.maxSpeed = 150;
-                this.accelerationTimeTo100km = 5.0;
+                this.accelerationTimeTo100km = 5.7;
             }
             else if (this.EngineType.equals(Message.ENGINE_SPORTCAR)) {
                 this.maxSpeed = 270;
@@ -149,7 +149,7 @@ public class Car {
                 for (int i = 0; i < newNumberOfWheels; i++) {
 
                     this.wheel[i] = new CarWheel();   //    создание нового массива колес (меньшего размера)
-                    this.wheel[i] = wheel[i];         //    заполнение значением из ранее созданной копии
+                    this.wheel[i] = wheel[i];         //    заполнение значениями из ранее созданной копии
 
                 }
 
@@ -163,7 +163,7 @@ public class Car {
 
                         this.wheel[i] = new CarWheel();   //    создание нового массива колес (большего размера)
                         if (i < this.numberOfWheels) {
-                            this.wheel[i] = wheel[i];     //    заполнение значением из ранее созданной копии
+                            this.wheel[i] = wheel[i];     //    заполнение значениями из ранее созданной копии
                         }
                     }
                 }
@@ -239,6 +239,9 @@ public class Car {
             }
 
         }
+
+
+    //  Здесь пошли методы для работы с полями объекта car  (включая массивы дверей/окон и шин)
 
 
     public boolean getStatusDoor(int number) {
@@ -323,7 +326,7 @@ public class Car {
     }
 
     public void wipeTheWheelTire(int number, int percentToWipeTheTire) {     //  Перегрузка, можно передавать число (насколько стереть шину)
-        this.wheel[number].wipeTheTire(percentToWipeTheTire);                //  и в виде процентов, и в виде уже готового double значения
+        this.wheel[number].wipeTheTire(percentToWipeTheTire);                //  и в виде процентов, и в виде готового double значения
     }
 
     public void setNumberOfWheels(int number) {
@@ -403,7 +406,7 @@ public class Car {
     }
 
     public int getMaxSpeedPossible() {    //  Здесь нужно добавить логику рассчета максимально возможной скорости
-                                          //   макс. стертая шина * maxSpeed
+                                          //   макс. стертая шина * maxSpeed   (сортировка массива шин)
         return this.maxSpeedPossible;
     }
 
