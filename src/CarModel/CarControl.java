@@ -2,43 +2,28 @@ package CarModel;
 
 public class CarControl {
 
+    private int numberOfDoors;
+    Car car;
+
+    CarControl() {
+        this.numberOfDoors = chooseNumberOfDoorsInCar();
+        this.car = new Car(this.numberOfDoors);
+
+     // this.car = new Car("01 January, 2018");
+     // this.car = new Car(numberOfDoors, 10, Message.ENGINE_SPORTCAR);
+     // this.car = new Car(numberOfDoors, "01 January, 2018", 5, Message.ENGINE_USUAL);
+    }
+
+    CarControl(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+        this.car = new Car(this.numberOfDoors);
+    }
+
+
     public void carControl() {
 
-        int numberOfDoors;
-
-        System.out.print("Введите число дверей в автомобиле : ");
-        numberOfDoors = DataReader.readIntNumber();
-        System.out.println();
-
-            if (numberOfDoors > 10) {
-                System.out.println(Message.ARE_YOU_SURE);
-                System.out.println("It's too much.  We set only 10 doors and went to drink coffee.  :))) \n");
-                numberOfDoors = 10;
-            } else {
-                if (numberOfDoors == 0) {
-                    System.out.println(Message.ARE_YOU_SURE);
-                    System.out.println("Can you imagine a car without doors?  How you get inside it?");
-                    System.out.println("So, we set one door especially for you.  It's a present :)))  Don't thank! \n");
-                    numberOfDoors = 1;
-                } else {
-                    if (numberOfDoors < 0) {
-                        System.out.println("We couldn't even imagine such a car!!!");
-                        System.out.println("So, only for you, we set two doors.  It would be a sport car! :))  Don't thank! \n");
-                        numberOfDoors = 2;
-                    }
-                }
-            }
-
-
-        Car car = new Car(numberOfDoors);
-
-    // Car car = new Car("01 January, 2018");
-
-    // Car car = new Car(numberOfDoors, 10, Message.ENGINE_SPORTCAR);
-
-    // Car car = new Car(numberOfDoors, "01 January, 2018", 5, Message.ENGINE_USUAL);
-
          car.carLaunch();
+
 
 
 
@@ -48,7 +33,39 @@ public class CarControl {
     }
 
 
-  /*    Проверка работы массива колес
+    public static int chooseNumberOfDoorsInCar() {
+        int numberOfDoors;
+
+        System.out.print("Введите число дверей в автомобиле : ");
+        numberOfDoors = DataReader.readIntNumber();
+        System.out.println();
+
+        if (numberOfDoors > 10) {
+            System.out.println(Message.ARE_YOU_SURE);
+            System.out.println("It's too much.  We set only 10 doors and went to drink coffee.  :))) \n");
+            numberOfDoors = 10;
+        } else {
+            if (numberOfDoors == 0) {
+                System.out.println(Message.ARE_YOU_SURE);
+                System.out.println("Can you imagine a car without doors?  How you get inside it?");
+                System.out.println("So, we set one door especially for you.  It's a present :)))  Don't thank! \n");
+                numberOfDoors = 1;
+            } else {
+                if (numberOfDoors < 0) {
+                    System.out.println("We couldn't even imagine such a car!!!");
+                    System.out.println("So, only for you, we set two doors.  It would be a sport car! :))  Don't thank! \n");
+                    numberOfDoors = 2;
+                }
+            }
+        }
+
+        return numberOfDoors;
+    }
+
+
+/* //  Проверка работы массива колес
+
+    private void testWheel() {
 
         System.out.println("\nTest WHEEL String !");
         int numberOfWheels = car.getNumberOfWheels();
@@ -79,10 +96,13 @@ public class CarControl {
             System.out.print("\nNew status of wheel # " + (i+1) + " : " + car.getWheelTireIntegrity(i));
         }
 
-    */
+ }
+      */
 
 
-   /*  Проверка работы логики изменения скорости в зависимости от состояния шин
+/*  //  Проверка работы логики изменения скорости в зависимости от состояния шин
+
+    private void testSpeed() {
 
         car.wipeTheWheelTire(0, 0.15);
         car.wipeTheWheelTire(1, 28);
@@ -99,8 +119,9 @@ public class CarControl {
         System.out.println();
         System.out.println("Current Speed :  " + car.getCurrentSpeed());
 
-     */
+        }
 
+   */
 
 }
 
