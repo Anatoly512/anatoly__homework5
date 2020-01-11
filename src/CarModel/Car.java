@@ -378,24 +378,41 @@ public class Car {
     }
 
     public void setCurrentSpeed(int currentSpeed) {
+        int maxSpeedPossible = getMaxSpeedPossible();
 
-        if (currentSpeed > this.maxSpeedPossible) {
-            currentSpeed = this.maxSpeedPossible;
-            System.out.println("Sorry,  ваш тип двигателя не позволяет разгоняться до таких скоростей");
-            System.out.println("Ваша текущая скорость (максимально возможная для вашего двигателя) : " + currentSpeed + " км/ч");
-            // Потом нужно будет заменить значение currentSpeed на get.MaxSpeedPossible()
+        if (currentSpeed > getMaxSpeed()) {
+            currentSpeed = maxSpeedPossible;
+            System.out.println(Message.SPEED_SORRY);
+            System.out.print(Message.SPEED_MAX + this.maxSpeed + Message.SPEED_KM);
+            System.out.println(Message.SPEED_FORWARD_BACK);
         }
-        if (currentSpeed < 0) {  // Здесь нужно ограничить отрицательную скорость теми же значениями
-            currentSpeed = -(currentSpeed);
-            if (currentSpeed > this.maxSpeedPossible) {
-                currentSpeed = this.maxSpeedPossible;
+        else {
+            if (currentSpeed < 0) {  // Здесь нужно ограничить отрицательную скорость теми же значениями
+                currentSpeed = -(currentSpeed);
+                if (currentSpeed > getMaxSpeed()) {
+                    currentSpeed = maxSpeedPossible;
+                    System.out.println(Message.SPEED_SORRY);
+                    System.out.print(Message.SPEED_MAX + this.maxSpeed + Message.SPEED_KM);
+                    System.out.println(Message.SPEED_FORWARD_BACK);
+                }
+                if (currentSpeed > maxSpeedPossible) {
+                    currentSpeed = maxSpeedPossible;
+                    System.out.println(Message.SPEED_TIRES);
+                    System.out.println(Message.SPEED_POSSIBLE + (-maxSpeedPossible) + Message.SPEED_KM);
+                }
+                currentSpeed = -(currentSpeed);
             }
-            currentSpeed = -(currentSpeed);
-            System.out.println("Sorry,  ваш тип двигателя не позволяет разгоняться до таких скоростей");
-            System.out.println("Ваша текущая скорость (максимально возможная для вашего двигателя) : " + currentSpeed + " км/ч");
-
-            // Потом нужно будет заменить значение currentSpeed на get.MaxSpeedPossible()
         }
+
+        if (currentSpeed > maxSpeedPossible)
+        {
+            System.out.println(Message.SPEED_TIRES);
+            System.out.println(Message.SPEED_POSSIBLE + maxSpeedPossible + Message.SPEED_KM);
+
+            currentSpeed = maxSpeedPossible;
+        }
+
+        System.out.println(Message.SPEED_CURRENT + currentSpeed + Message.SPEED_KM);
 
         this.currentSpeed = currentSpeed;
 
@@ -405,9 +422,24 @@ public class Car {
         return this.accelerationTimeTo100km;
     }
 
-    public int getMaxSpeedPossible() {    //  Здесь нужно добавить логику рассчета максимально возможной скорости
-                                          //   макс. стертая шина * maxSpeed   (сортировка массива шин)
+
+    public int getMaxSpeedPossible() {    //  макс. стертая шина * maxSpeed
+
+        this.maxSpeedPossible = (int) (findMaxWipedTire() * this.maxSpeed);
+
         return this.maxSpeedPossible;
+    }
+
+    public double findMaxWipedTire() {   //  Наиболее стертая шина
+        double maxWipedTire = 1.0;
+        double number;
+
+        for (int i = 0; i < this.numberOfWheels; i++) {       //  Поиск наименьшего значения в массиве колес
+            number = getWheelTireIntegrity(i);
+            if (number < maxWipedTire) { maxWipedTire = number; }
+        }
+
+        return maxWipedTire;
     }
 
 
@@ -417,7 +449,7 @@ public class Car {
 
     public void setEngineType(String EngineType) {
 
-        switch (this.EngineType) {
+        switch (EngineType) {
             case Message.ENGINE_USUAL:
                 break;
             case Message.ENGINE_SPORTCAR:
@@ -431,8 +463,23 @@ public class Car {
         }
 
         this.EngineType = EngineType;
-    }
 
+        switch (this.EngineType) {
+            case Message.ENGINE_USUAL:
+                this.maxSpeed = 150;
+                this.accelerationTimeTo100km = 5.7;
+                break;
+            case Message.ENGINE_SPORTCAR:
+                this.maxSpeed = 270;
+                this.accelerationTimeTo100km = 2.8;
+                break;
+            case Message.ENGINE_TANK:
+                this.maxSpeed = 1000;
+                this.accelerationTimeTo100km = 0.02;
+                break;
+        }
+                this.currentSpeed = 0;   //  Считается что смена двигателя требует остановки машины
+    }
 
 
 }

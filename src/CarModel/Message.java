@@ -13,6 +13,14 @@ public class Message {
         public static final String SYMBOL_COLON = " : ";
         public static final String STATUS_DOOR = "\nStatus  DOOR  № ";
         public static final String STATUS_WINDOW = "Status  WINDOW  № ";
+        public static final String SPEED_SORRY = "Sorry,  ваш тип двигателя не позволяет разгоняться до таких скоростей ";
+        public static final String SPEED_MAX = "Скорость максимально возможная для вашего двигателя : ";
+        public static final String SPEED_FORWARD_BACK = "  (вперед или назад)";
+        public static final String SPEED_CURRENT = "Ваша текущая скорость (зависит от состояния шин) : ";
+        public static final String SPEED_TIRES = "Состояние ваших шин не позволяет разогнаться до подобной скорости !";
+        public static final String SPEED_POSSIBLE = "Максимальная скорость которую ваши шины позволяют набрать : ";
+        public static final String SPEED_KM = " км/ч";
+
         public static final String UNKNOWN_DATE = "Unknown date of manufacture";
 
         public static final String ENGINE_USUAL = "V8";

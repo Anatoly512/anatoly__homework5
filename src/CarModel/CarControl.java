@@ -40,17 +40,28 @@ public class CarControl {
 
          car.carLaunch();
 
-    //  Проверка работы массива колес
-    //  testWheel();
 
+     /*  Проверка работы логики изменения скорости в зависимости от состояния шин
+
+        car.wipeTheWheelTire(0, 0.15);
+        car.wipeTheWheelTire(1, 28);
+        car.wipeTheWheelTire(2, 0.10);
+        car.wipeTheWheelTire(3, 12);
 
         System.out.println("\nTest SPEED String !\n");
         System.out.println("Max Speed :  " + car.getMaxSpeed());
         System.out.println("Current Speed :  " + car.getCurrentSpeed());
+        System.out.println("Most Wiped Tire :  " + car.findMaxWipedTire());
+        System.out.println("Max Speed Possible:  " + car.getMaxSpeedPossible());
         System.out.print("SET new CURRENT Speed :  ");
         car.setCurrentSpeed(DataReader.readIntNumber());
         System.out.println();
         System.out.println("Current Speed :  " + car.getCurrentSpeed());
+
+     */
+
+
+
 
     }
 
@@ -90,7 +101,6 @@ public class CarControl {
 
     }
        */
-
 
 }
 
