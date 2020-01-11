@@ -478,7 +478,7 @@ public class Car {
                 this.accelerationTimeTo100km = 0.02;
                 break;
         }
-                this.currentSpeed = 0;   //  Считается что смена двигателя требует остановки машины
+                this.currentSpeed = 0;   //  Смена двигателя требует остановки машины
     }
 
 
