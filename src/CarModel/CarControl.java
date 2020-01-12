@@ -26,38 +26,248 @@ public class CarControl {
 
 
         boolean trigger = true;
+        boolean subtrigger = true;
         int choice;
 
         while (trigger) {
 
-            System.out.println();   //  Список вариантов в меню
+            /*
+            Двери\окна :
+               открыть дверь
+               закрыть дверь
+               открыть/закрыть дверь (если дверь открыта и вызывается эта функция, значит дверь необходимо закрыть и наоборот)
+               открыть окно
+               закрыть окно
+               открыть/закрыть окно(если дверь открыта и вызывается эта функция, значит дверь необходимо закрыть и наоборот)
+               получить дверь по индексу
+            Шины :
+               Сменить шину на новую
+               Стереть шину на X%
+               Получить состояние (return)
+            Пассажиры :
+               Посадить 1 пассажира в машину
+               Высадить 1 пассажира
+               Высадить всех пассажиров
+            Скорость и тип двигателя :
+               Изменить текущую скорость
+               Вычислить текущую возможную максимальную скорость (Максимальная скорость равна 0 если в машине нет ни одного пассажира, так как некому ее вести)
+               Узнать текущую скорость
+               Сменить тип двигателя
+            Колеса :
+               Снять с машины X колес
+               Снять все колеса с машины
+               Установить на машину X новых колесу (вдобавок к имеющимся)
+               Получить колесо по индексу
+            Машина :
+               Вывести в консоль данные об объекте (все поля и вычисленную максимальную скорость в зависимости от целостности колес и наличия водителя)
+
+             */
+
+            System.out.println("\nCAR CONTROL MENU : ");
+            System.out.println("1.  Doors and windows ");
+            System.out.println("2.  Wheels (tires) ");
+            System.out.println("3.  Passangers ");
+            System.out.println("4.  Speed (engine) ");
+            System.out.println("5.  Wheels (set and remove)  ");
+            System.out.println("6.  Show all info about car ");
+
+
+            subtrigger = true;
 
             choice = DataReader.readIntNumber();
             switch (choice){
 
                 case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 0:
-                    System.out.println(Message.ERROR_INPUT_MESSAGE);
-                    break;
-                default:
+                    System.out.println("\nDoors and windows menu ! \n");
 
+                    while (subtrigger) {
+                        System.out.println("1. ");
+                        System.out.println("2. ");
+                        System.out.println("3. ");
+                        System.out.println("4. ");
+                        System.out.println("5. ");
+                        System.out.println("0.  Return to main menu ");
+
+                        choice = DataReader.readIntNumber();
+                        switch (choice) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 0:
+                                subtrigger = false;
+                                break;
+
+                            default:
+                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                        }
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("\nWheels (tires) menu ! \n");
+
+                    while (subtrigger) {
+                        System.out.println("1. ");
+                        System.out.println("2. ");
+                        System.out.println("3. ");
+                        System.out.println("4. ");
+                        System.out.println("5. ");
+                        System.out.println("0.  Return to main menu ");
+
+                        choice = DataReader.readIntNumber();
+                        switch (choice) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 0:
+                                subtrigger = false;
+                                break;
+
+                            default:
+                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("\nPassangers menu ! \n");
+
+                    while (subtrigger) {
+                        System.out.println("1.  Add 1 passanger ");
+                        System.out.println("2.  Sub 1 passanger ");
+                        System.out.println("3.  Empty the car ");
+                        System.out.println("4.  Show passanger capacity ");
+                        System.out.println("5.  Change passanger capacity");
+                        System.out.println("0.  Return to main menu ");
+
+                        System.out.println("  Current number of passangers  : " + car.getCurrentNumberOfPassangers());
+
+                        choice = DataReader.readIntNumber();
+                        switch (choice){
+                            case 1:
+                                System.out.println("Add 1 passanger");
+                                car.addOnePassenger();
+                                break;
+                            case 2:
+                                System.out.println("Sub 1 passanger ");
+                                car.subOnePassenger();
+                                break;
+                            case 3:
+                                System.out.println("Car is empty now!");
+                                car.subAllPassengers();
+                                break;
+                            case 4:
+                                System.out.println("  Passanger capacity of this car  : " + car.getPassangerCapacity());
+                                break;
+                            case 5:
+                                System.out.print("  Please, enter new passanger capacity of this car  : ");
+                                car.setPassangerCapacity(DataReader.readIntNumber());
+                                break;
+                            case 0:
+                                subtrigger = false;
+                                break;
+
+                            default:
+                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("\nSpeed (engine) menu ! \n");
+
+                    while (subtrigger) {
+                        System.out.println("1. ");
+                        System.out.println("2. ");
+                        System.out.println("3. ");
+                        System.out.println("4. ");
+                        System.out.println("5. ");
+                        System.out.println("0.  Return to main menu ");
+
+                        choice = DataReader.readIntNumber();
+                        switch (choice) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 0:
+                                subtrigger = false;
+                                break;
+
+                            default:
+                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("\nWheels (set and remove) menu ! \n");
+
+                    while (subtrigger) {
+                        System.out.println("1. ");
+                        System.out.println("2. ");
+                        System.out.println("3. ");
+                        System.out.println("4. ");
+                        System.out.println("5. ");
+                        System.out.println("0.  Return to main menu ");
+
+                        choice = DataReader.readIntNumber();
+                        switch (choice) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 0:
+                                subtrigger = false;
+                                break;
+
+                            default:
+                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                        }
+                    }
+                    break;
+
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    //  Show all info about car
+
+                    System.out.println("\nShow all info about car ");
+                    // System.out.println(" Что-бы продолжить нажмите  ENTER ");
+                    // choice = DataReader.readIntNumber();
+
+                    break;
+
+                default:
+                    System.out.println(Message.ERROR_INPUT_MESSAGE);
             }
 
         }

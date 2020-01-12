@@ -348,20 +348,57 @@ public class Car {
     }
 
     public void setPassangerCapacity (int passangerCapacity) {
+
+        if (passangerCapacity < 0) {
+            System.out.println("\nWe could'n even imagine such a car!!!");
+            System.out.println("So, we install one passanger chair only for you!");
+            passangerCapacity = 1;
+        }
+        if (passangerCapacity == 0) {
+            System.out.println("\nOh, you want a dron instead car?!  Mmm...  OK! ");
+            System.out.println("Elon Musk, it's you? :) :) ");
+        }
+        if (passangerCapacity > 100) {
+            System.out.println("\n" + Message.ARE_YOU_SURE);
+            System.out.println("It's not a train! :) ");
+            passangerCapacity = 100;
+        }
+
         this.passangerCapacity = passangerCapacity;
+
+        if (this.currentNumberOfPassangers > this.passangerCapacity) {
+            this.currentNumberOfPassangers = this.passangerCapacity;
+        }
     }
 
 
     public boolean addOnePassenger() {
-        if (this.currentNumberOfPassangers == this.passangerCapacity) {return false;}
+        if (this.currentNumberOfPassangers == this.passangerCapacity) {
+            System.out.println("\nБольше не влазит! :) ");
+            return false;
+        }
+
+        if (this.currentNumberOfPassangers > this.passangerCapacity) {
+            this.currentNumberOfPassangers = this.passangerCapacity;
+            return true;
+        }
 
         this.currentNumberOfPassangers++;
         return true;
     }
 
     public void subOnePassenger() {
+        if  (this.currentNumberOfPassangers == 0) {
+            System.out.println("\nНекого высаживать! ");
+            System.out.println("Мы можем выкинуть двигатель! :) ");
+            return;
+        }
         this.currentNumberOfPassangers--;
         if  (this.currentNumberOfPassangers < 0) {this.currentNumberOfPassangers = 0;}
+
+        if (this.currentNumberOfPassangers > this.passangerCapacity) {
+            this.currentNumberOfPassangers = this.passangerCapacity;
+        }
     }
 
     public void subAllPassengers() {
