@@ -81,12 +81,18 @@ public class CarControl {
                     System.out.println("\nDoors and windows menu ! \n");
 
                     while (subtrigger) {
-                        System.out.println("1. ");
-                        System.out.println("2. ");
-                        System.out.println("3. ");
-                        System.out.println("4. ");
-                        System.out.println("5. ");
-                        System.out.println("0.  Return to main menu ");
+
+                    //  Просмотр статуса дверей и окон
+                        showDoorsAndWindowsStatus();
+
+                        System.out.println("\n1. Open the door ");
+                        System.out.println("2. Close the door  ");
+                        System.out.println("3. Open/close the door ");
+                        System.out.println("4. Open the window ");
+                        System.out.println("5. Close the window ");
+                        System.out.println("6. Open/close the window ");
+                        System.out.println("7. Show info");
+                        System.out.println("0. Return to main menu ");
 
                         choice = DataReader.readIntNumber();
                         switch (choice) {
@@ -100,12 +106,20 @@ public class CarControl {
                                 break;
                             case 5:
                                 break;
+                            case 6:
+                                break;
+                            case 7:      //  Свободные цифры пусть тоже участвуют в показе информации
+                            case 8:
+                            case 9:
+                                showDoorsAndWindowsStatus();              //  Просмотр статуса дверей и окон
+                                DataReader.pressEnterKeyToContinue();
+                                break;
                             case 0:
                                 subtrigger = false;
                                 break;
 
                             default:
-                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                                System.out.println(Message.ERROR_INPUT_MESSAGE);
                         }
                     }
                     break;
@@ -138,7 +152,7 @@ public class CarControl {
                                 break;
 
                             default:
-                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                                System.out.println(Message.ERROR_INPUT_MESSAGE);
                         }
                     }
                     break;
@@ -182,7 +196,7 @@ public class CarControl {
                                 break;
 
                             default:
-                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                                System.out.println(Message.ERROR_INPUT_MESSAGE);
                         }
                     }
                     break;
@@ -215,7 +229,7 @@ public class CarControl {
                                 break;
 
                             default:
-                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                                System.out.println(Message.ERROR_INPUT_MESSAGE);
                         }
                     }
                     break;
@@ -248,7 +262,7 @@ public class CarControl {
                                 break;
 
                             default:
-                                System.out.println(Message.ERROR_INPUT_MESSAGE2);
+                                System.out.println(Message.ERROR_INPUT_MESSAGE);
                         }
                     }
                     break;
@@ -301,6 +315,14 @@ public class CarControl {
         }
 
         return numberOfDoors;
+    }
+
+    public void showDoorsAndWindowsStatus() {
+
+        int counter = car.getNumberOfDoors();
+
+        for (int i = 0; i < counter; i++) {                           //  Просмотр состояния дверей и окон
+            car.door[i].showStatusTheDoorAndTheWindow(i); }
     }
 
 

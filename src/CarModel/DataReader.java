@@ -86,6 +86,20 @@ public class DataReader {
     }
 
 
+    public static void pressEnterKeyToContinue () {
+        Scanner in = new Scanner(System.in);
+
+        try
+        {
+            System.out.print(Message.PRESS_ENTER_TO_CONTINUE);
+            System.in.read();
+        }
+        catch(Exception ex)
+        {
+            System.out.print(Message.ERROR_STRING_MESSAGE);
+        }
+    }
+
 /*
     public static String readString () {
         boolean trigger = true;
