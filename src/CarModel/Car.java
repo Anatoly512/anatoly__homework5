@@ -2,7 +2,7 @@ package CarModel;
 
 public class Car {
 
-    private static int numberOfDoors;
+    private int numberOfDoors;
     private int numberOfWheels = 4;
     private int passengerCapacity;
     private int currentNumberOfPassengers = 1;
@@ -20,7 +20,7 @@ public class Car {
 
 
     Car(int numberOfDoors) {
-        Car.numberOfDoors = numberOfDoors;
+        this.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = Message.UNKNOWN_DATE;
         this.passengerCapacity = 10;
         this.EngineType = Message.ENGINE_USUAL;
@@ -43,7 +43,7 @@ public class Car {
     }
 
     Car(int numberOfDoors, String dateOfManufacture, int passengerCapacity, String EngineType) {
-        Car.numberOfDoors = numberOfDoors;
+        this.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = dateOfManufacture;
         this.passengerCapacity = passengerCapacity;
         this.EngineType = EngineType;
@@ -66,7 +66,7 @@ public class Car {
     }
 
     Car(int numberOfDoors, int passengerCapacity, String EngineType) {
-        Car.numberOfDoors = numberOfDoors;
+        this.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = Message.UNKNOWN_DATE;
         this.passengerCapacity = passengerCapacity;
         this.EngineType = EngineType;
@@ -89,7 +89,7 @@ public class Car {
     }
 
     Car(String dateOfManufacture) {
-        Car.numberOfDoors = 4;
+        this.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
         this.passengerCapacity = 5;
         this.currentNumberOfPassengers = 0;   //  Машина пуста (вдруг её надо подарить, или продать), в других вариантах в ней есть водитель
@@ -241,7 +241,7 @@ public class Car {
         }
 
 
-    //  Здесь пошли методы для работы с полями объекта car  (включая массивы дверей/окон и шин)
+    //  Здесь пошли методы для работы с полями объекта Car  (включая массивы дверей/окон, шин и т.д.)
 
 
     public boolean getStatusDoor(int number) {
@@ -269,11 +269,13 @@ public class Car {
 
     }
 
+    public int getNumberOfDoors() {
+        return this.numberOfDoors;
+    }
+
 
     public void showStatusDoor(int number) {
-
         this.door[number].showStatusTheDoorAndTheWindow(number);
-
     }
 
 
@@ -368,6 +370,9 @@ public class Car {
 
         if (this.currentNumberOfPassengers > this.passengerCapacity) {
             this.currentNumberOfPassengers = this.passengerCapacity;
+            int a = (int) (Math.random() * (4-2) ) + 2;
+            System.out.print("Пришлось высадить часть пассажиров. ");
+            System.out.println("Мы оставили им запасной аккумулятор и " + a + " гаечных ключа.");
         }
     }
 
