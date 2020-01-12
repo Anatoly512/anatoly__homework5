@@ -85,4 +85,27 @@ public class DataReader {
         return doubleRound;
     }
 
+
+/*
+    public static String readString () {
+        boolean trigger = true;
+        String StringInput = "";
+        Scanner in = new Scanner(System.in);
+
+        do {
+            try {
+                StringInput = in.next();
+                trigger = false;
+            } catch (Exception ex) {
+                System.out.print(Message.ERROR_STRING_MESSAGE);
+                trigger = true;
+            }
+        } while (trigger);
+
+
+        return StringInput;
+    }
+
+ */
+
 }

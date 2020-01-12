@@ -6,6 +6,7 @@ public class Message {
         public static final String INPUT_OPEN_CLOSED = "  Open - 1,  Closed - 2  :  ";
         public static final String INPUT_ONE_OR_TWO = "\nPlease, enter only  1 (OPEN)  or  2 (CLOSED)  :  ";
         public static final String ERROR_INT_INPUT_MESSAGE = "\nВы ввели что-то не то!  Попробуйте ввести целое число : ";
+        public static final String ERROR_STRING_MESSAGE = "\nПопробуйте ввести что-то другое : ";
         public static final String WRONG_DURING_INPUT = " Something wrong during input a number!";
         public static final String PLEASE_TRY_AGAIN = "\n Please, try again : ";
         public static final String ERROR_INPUT_MESSAGE = "\nВы ввели что-то не то!  Попробуйте ввести число от 0 до 9 ";

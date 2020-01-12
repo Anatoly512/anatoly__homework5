@@ -66,7 +66,7 @@ public class CarControl {
             System.out.println("\nCAR CONTROL MENU : ");
             System.out.println("1.  Doors and windows ");
             System.out.println("2.  Wheels (tires) ");
-            System.out.println("3.  Passangers ");
+            System.out.println("3.  Passengers ");
             System.out.println("4.  Speed (engine) ");
             System.out.println("5.  Wheels (set and remove)  ");
             System.out.println("6.  Show all info about car ");
@@ -144,26 +144,26 @@ public class CarControl {
                     break;
 
                 case 3:
-                    System.out.println("\nPassangers menu ! \n");
+                    System.out.println("\nPassengers menu ! \n");
 
                     while (subtrigger) {
-                        System.out.println("1.  Add 1 passanger ");
-                        System.out.println("2.  Sub 1 passanger ");
+                        System.out.println("1.  Add 1 passenger ");
+                        System.out.println("2.  Sub 1 passenger ");
                         System.out.println("3.  Empty the car ");
-                        System.out.println("4.  Show passanger capacity ");
-                        System.out.println("5.  Change passanger capacity");
+                        System.out.println("4.  Show passenger capacity ");
+                        System.out.println("5.  Change passenger capacity");
                         System.out.println("0.  Return to main menu ");
 
-                        System.out.println("  Current number of passangers  : " + car.getCurrentNumberOfPassangers());
+                        System.out.println("  Current number of passengers  : " + car.getCurrentNumberOfPassengers());
 
                         choice = DataReader.readIntNumber();
                         switch (choice){
                             case 1:
-                                System.out.println("Add 1 passanger");
+                                System.out.println("Add 1 passenger");
                                 car.addOnePassenger();
                                 break;
                             case 2:
-                                System.out.println("Sub 1 passanger ");
+                                System.out.println("Sub 1 passenger ");
                                 car.subOnePassenger();
                                 break;
                             case 3:
@@ -171,11 +171,11 @@ public class CarControl {
                                 car.subAllPassengers();
                                 break;
                             case 4:
-                                System.out.println("  Passanger capacity of this car  : " + car.getPassangerCapacity());
+                                System.out.println("  Passenger capacity of this car  : " + car.getPassengerCapacity());
                                 break;
                             case 5:
-                                System.out.print("  Please, enter new passanger capacity of this car  : ");
-                                car.setPassangerCapacity(DataReader.readIntNumber());
+                                System.out.print("  Please, enter new passenger capacity of this car  : ");
+                                car.setPassengerCapacity(DataReader.readIntNumber());
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -261,8 +261,7 @@ public class CarControl {
                     //  Show all info about car
 
                     System.out.println("\nShow all info about car ");
-                    // System.out.println(" Что-бы продолжить нажмите  ENTER ");
-                    // choice = DataReader.readIntNumber();
+
 
                     break;
 

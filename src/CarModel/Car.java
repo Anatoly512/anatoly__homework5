@@ -4,8 +4,8 @@ public class Car {
 
     private static int numberOfDoors;
     private int numberOfWheels = 4;
-    private int passangerCapacity;
-    private int currentNumberOfPassangers = 1;
+    private int passengerCapacity;
+    private int currentNumberOfPassengers = 1;
     private String EngineType;
     private int maxSpeed;
     private int maxSpeedPossible;
@@ -22,7 +22,7 @@ public class Car {
     Car(int numberOfDoors) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = Message.UNKNOWN_DATE;
-        this.passangerCapacity = 10;
+        this.passengerCapacity = 10;
         this.EngineType = Message.ENGINE_USUAL;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
@@ -42,10 +42,10 @@ public class Car {
         }
     }
 
-    Car(int numberOfDoors, String dateOfManufacture, int passangerCapacity, String EngineType) {
+    Car(int numberOfDoors, String dateOfManufacture, int passengerCapacity, String EngineType) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = dateOfManufacture;
-        this.passangerCapacity = passangerCapacity;
+        this.passengerCapacity = passengerCapacity;
         this.EngineType = EngineType;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
@@ -65,10 +65,10 @@ public class Car {
         }
     }
 
-    Car(int numberOfDoors, int passangerCapacity, String EngineType) {
+    Car(int numberOfDoors, int passengerCapacity, String EngineType) {
         Car.numberOfDoors = numberOfDoors;
         this.DateOfManufacture = Message.UNKNOWN_DATE;
-        this.passangerCapacity = passangerCapacity;
+        this.passengerCapacity = passengerCapacity;
         this.EngineType = EngineType;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
@@ -91,8 +91,8 @@ public class Car {
     Car(String dateOfManufacture) {
         Car.numberOfDoors = 4;
         this.DateOfManufacture = dateOfManufacture;
-        this.passangerCapacity = 5;
-        this.currentNumberOfPassangers = 0;   //  Машина пуста (вдруг её надо подарить, или продать), в других вариантах в ней есть водитель
+        this.passengerCapacity = 5;
+        this.currentNumberOfPassengers = 0;   //  Машина пуста (вдруг её надо подарить, или продать), в других вариантах в ней есть водитель
         this.EngineType = Message.ENGINE_SPORTCAR;
         this.door = new CarDoor[numberOfDoors];
         this.wheel = new CarWheel[this.numberOfWheels];
@@ -339,70 +339,70 @@ public class Car {
     }
 
 
-    public int getCurrentNumberOfPassangers() {
-        return this.currentNumberOfPassangers;
+    public int getCurrentNumberOfPassengers() {
+        return this.currentNumberOfPassengers;
     }
 
-    public int getPassangerCapacity() {
-        return this.passangerCapacity;
+    public int getPassengerCapacity() {
+        return this.passengerCapacity;
     }
 
-    public void setPassangerCapacity (int passangerCapacity) {
+    public void setPassengerCapacity (int passengerCapacity) {
 
-        if (passangerCapacity < 0) {
+        if (passengerCapacity < 0) {
             System.out.println("\nWe could'n even imagine such a car!!!");
-            System.out.println("So, we install one passanger chair only for you!");
-            passangerCapacity = 1;
+            System.out.println("So, we install one passenger chair only for you!");
+            passengerCapacity = 1;
         }
-        if (passangerCapacity == 0) {
-            System.out.println("\nOh, you want a dron instead car?!  Mmm...  OK! ");
+        if (passengerCapacity == 0) {
+            System.out.println("\nOh, you want a dron instead car?!   OK! ");
             System.out.println("Elon Musk, it's you? :) :) ");
         }
-        if (passangerCapacity > 100) {
+        if (passengerCapacity > 100) {
             System.out.println("\n" + Message.ARE_YOU_SURE);
             System.out.println("It's not a train! :) ");
-            passangerCapacity = 100;
+            passengerCapacity = 100;
         }
 
-        this.passangerCapacity = passangerCapacity;
+        this.passengerCapacity = passengerCapacity;
 
-        if (this.currentNumberOfPassangers > this.passangerCapacity) {
-            this.currentNumberOfPassangers = this.passangerCapacity;
+        if (this.currentNumberOfPassengers > this.passengerCapacity) {
+            this.currentNumberOfPassengers = this.passengerCapacity;
         }
     }
 
 
     public boolean addOnePassenger() {
-        if (this.currentNumberOfPassangers == this.passangerCapacity) {
+        if (this.currentNumberOfPassengers == this.passengerCapacity) {
             System.out.println("\nБольше не влазит! :) ");
             return false;
         }
 
-        if (this.currentNumberOfPassangers > this.passangerCapacity) {
-            this.currentNumberOfPassangers = this.passangerCapacity;
+        if (this.currentNumberOfPassengers > this.passengerCapacity) {
+            this.currentNumberOfPassengers = this.passengerCapacity;
             return true;
         }
 
-        this.currentNumberOfPassangers++;
+        this.currentNumberOfPassengers++;
         return true;
     }
 
     public void subOnePassenger() {
-        if  (this.currentNumberOfPassangers == 0) {
+        if  (this.currentNumberOfPassengers == 0) {
             System.out.println("\nНекого высаживать! ");
             System.out.println("Мы можем выкинуть двигатель! :) ");
             return;
         }
-        this.currentNumberOfPassangers--;
-        if  (this.currentNumberOfPassangers < 0) {this.currentNumberOfPassangers = 0;}
+        this.currentNumberOfPassengers--;
+        if  (this.currentNumberOfPassengers < 0) {this.currentNumberOfPassengers = 0;}
 
-        if (this.currentNumberOfPassangers > this.passangerCapacity) {
-            this.currentNumberOfPassangers = this.passangerCapacity;
+        if (this.currentNumberOfPassengers > this.passengerCapacity) {
+            this.currentNumberOfPassengers = this.passengerCapacity;
         }
     }
 
     public void subAllPassengers() {
-        this.currentNumberOfPassangers = 0;
+        this.currentNumberOfPassengers = 0;
     }
 
 
