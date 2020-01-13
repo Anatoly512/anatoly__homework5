@@ -244,31 +244,6 @@ public class Car {
     //  Здесь пошли методы для работы с полями объекта Car  (включая массивы дверей/окон, шин и т.д.)
 
 
-    public boolean getStatusDoor(int number) {
-
-       return this.door[number].getStatusDoor();
-
-    }
-
-    public boolean getStatusWindow(int number) {
-
-        return this.door[number].getStatusWindow();
-
-    }
-
-
-    public String getStringStatusDoor(int number) {
-
-        return this.door[number].getStringStatusDoor();
-
-    }
-
-    public String getStringStatusWindow(int number) {
-
-        return this.door[number].getStringStatusWindow();
-
-    }
-
     public int getNumberOfDoors() {
         return this.numberOfDoors;
     }
@@ -285,13 +260,6 @@ public class Car {
 
         for (int i = 0; i < counter; i++) {                           //  Просмотр состояния дверей и окон
             this.door[i].showStatusTheDoorAndTheWindow(i); }
-    }
-
-
-    public String getStringDateOfManufacture() {
-
-        return this.DateOfManufacture;
-
     }
 
 
@@ -317,6 +285,32 @@ public class Car {
 
     public void openOrCloseTheWindow(int number) {
         this.door[number].openOrCloseTheWindow();
+    }
+
+
+    public boolean getStatusDoor(int number) {
+
+        return this.door[number].getStatusDoor();
+
+    }
+
+    public boolean getStatusWindow(int number) {
+
+        return this.door[number].getStatusWindow();
+
+    }
+
+
+    public String getStringStatusDoor(int number) {
+
+        return this.door[number].getStringStatusDoor();
+
+    }
+
+    public String getStringStatusWindow(int number) {
+
+        return this.door[number].getStringStatusWindow();
+
     }
 
 
@@ -420,6 +414,13 @@ public class Car {
     }
 
 
+    public String getStringDateOfManufacture() {
+
+        return this.DateOfManufacture;
+
+    }
+
+
     public int getMaxSpeed() {
         return this.maxSpeed;
     }
@@ -468,6 +469,7 @@ public class Car {
         this.currentSpeed = currentSpeed;
 
     }
+
 
     public double getAccelerationTimeTo100km() {
         return this.accelerationTimeTo100km;

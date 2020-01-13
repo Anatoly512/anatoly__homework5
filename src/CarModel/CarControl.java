@@ -99,7 +99,7 @@ public class CarControl {
 
                                 if (!checkOut(choice)) { break;}
 
-                                choice--;
+                                choice--;                               //  Нумерация массива начинается с 0
                                 car.openTheDoor(choice);
                                 car.showStatusDoorAndWindow(choice);
                                 break;
@@ -170,27 +170,63 @@ public class CarControl {
                     break;
 
                 case 2:
-                    System.out.println("\nWheels (tires) menu ! \n");
+                    System.out.println("\nWheels (tires) menu ! ");
 
                     while (subtrigger) {
-                        System.out.println("1. ");
-                        System.out.println("2. ");
-                        System.out.println("3. ");
-                        System.out.println("4. ");
-                        System.out.println("5. ");
+                        System.out.println("\n1.  New tire ");
+                        System.out.println("2.  Wipe tire on Х% ");
+                        System.out.println("3.  Wipe out the tire  ");
+                        System.out.println("4.  Show all tires info ");
                         System.out.println("0.  Return to main menu ");
 
                         choice = DataReader.readIntNumber();
                         switch (choice) {
                             case 1:
+                                System.out.print("\nWhat NUMBER of tire to renew one  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOutNumberOfTires(choice)) { break;}
+
+                                choice--;
+                                car.changeWheelTireToNewOne(choice);
                                 break;
                             case 2:
+                                System.out.print("\nWhat NUMBER of tire to wipe  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOutNumberOfTires(choice)) { break;}
+
+                                System.out.print("\nНасколько вы хотите стереть эту шину  (в процентах  %)  :  ");
+                                int valuePercents = DataReader.readIntNumber();
+
+                                valuePercents = checkOutTireValueToWipe(valuePercents);     //  Проверка на диапазон (0-100%)
+                                choice--;
+                                car.wipeTheWheelTire(choice, valuePercents);
                                 break;
                             case 3:
+                                System.out.print("\nWhat NUMBER of tire to COMPLETLY wipe out  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOutNumberOfTires(choice)) { break;}
+
+                                choice--;
+                                car.wipeTheWheelTire(choice, 1.0);
                                 break;
-                            case 4:
-                                break;
+                            case 4:           //  Свободные цифры пусть тоже участвуют в показе информации
                             case 5:
+                            case 6:
+                            case 7:
+                            case 8:
+                            case 9:
+                                int realNumberOfWheels = car.getNumberOfWheels();
+                                for (int i = 0; i < realNumberOfWheels; i++) {
+
+                                    System.out.print("\nStatus of wheel # " + (i+1) + " : ");
+                                    System.out.print(car.getWheelTireIntegrity(i) + "  (" + ((int) (car.getWheelTireIntegrity(i) * 100 )) + "%) ");
+                                }
+
+                                System.out.println();
+                                DataReader.pressEnterKeyToContinue();
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -247,10 +283,10 @@ public class CarControl {
                     break;
 
                 case 4:
-                    System.out.println("\nSpeed (engine) menu ! \n");
+                    System.out.println("\nSpeed (engine) menu ! ");
 
                     while (subtrigger) {
-                        System.out.println("1. ");
+                        System.out.println("\n1. ");
                         System.out.println("2. ");
                         System.out.println("3. ");
                         System.out.println("4. ");
@@ -267,7 +303,11 @@ public class CarControl {
                                 break;
                             case 4:
                                 break;
-                            case 5:
+                            case 5:           //  Свободные цифры пусть тоже участвуют в показе информации
+                            case 6:
+                            case 7:
+                            case 8:
+                            case 9:
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -280,10 +320,10 @@ public class CarControl {
                     break;
 
                 case 5:
-                    System.out.println("\nWheels (set and remove) menu ! \n");
+                    System.out.println("\nWheels (set and remove) menu ! ");
 
                     while (subtrigger) {
-                        System.out.println("1. ");
+                        System.out.println("\n1. ");
                         System.out.println("2. ");
                         System.out.println("3. ");
                         System.out.println("4. ");
@@ -300,7 +340,11 @@ public class CarControl {
                                 break;
                             case 4:
                                 break;
-                            case 5:
+                            case 5:           //  Свободные цифры пусть тоже участвуют в показе информации
+                            case 6:
+                            case 7:
+                            case 8:
+                            case 9:
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -374,10 +418,43 @@ public class CarControl {
             System.out.print("\nНу, хоть одна дверь у машины должна же быть!  На планете Земля так принято... :) ");
             return false;
         }
-        if (choice <= 0) {
+        if (choice < 0) {
             System.out.println();
             System.out.println(Message.ARE_YOU_SURE);
             System.out.print("Где вы видели такую машину?!  У этой двери самые обычные, и находятся на обычных местах.");
+            return false;
+        }
+        return true;
+    }
+
+
+    private int checkOutTireValueToWipe(int choice) {
+
+        if ((choice > 100) || (choice < 0))  {
+            System.out.println("\nЧто вы хотите сделать с шиной??");
+            System.out.println("Мы уже поняли что она вам не нравится... :) ");
+        }
+        if (choice > 100) { choice = 100; }
+        if (choice < 0) { choice = 0; }
+
+        return choice;
+    }
+
+
+    private boolean checkOutNumberOfTires(int choice) {
+
+        if (choice > car.getNumberOfWheels()) {
+            System.out.println("\nУ нас не так уж много колес на этом автомобиле !");
+            System.out.println("Их сейчас установлено на эту машину всего " + car.getNumberOfWheels());
+            return false;
+        }
+        if (choice == 0) {
+            System.out.println("\nНу вот, первая в мире модель автомобиля совершенно без колес ! :) ");
+            System.out.println("Антигравитация - вот наше будущее!!!  :) :) ");
+            return false;
+        }
+        if (choice < 0) {
+            System.out.println("\nВы уверены?  Говорите, его приварили прямо к крыше??  ");
             return false;
         }
         return true;
