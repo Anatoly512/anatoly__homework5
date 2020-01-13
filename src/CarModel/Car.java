@@ -274,8 +274,17 @@ public class Car {
     }
 
 
-    public void showStatusDoor(int number) {
+    public void showStatusDoorAndWindow(int number) {
         this.door[number].showStatusTheDoorAndTheWindow(number);
+    }
+
+
+    public void showAllDoorsAndWindowsStatus() {
+
+        int counter = this.numberOfDoors;
+
+        for (int i = 0; i < counter; i++) {                           //  Просмотр состояния дверей и окон
+            this.door[i].showStatusTheDoorAndTheWindow(i); }
     }
 
 

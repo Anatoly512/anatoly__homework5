@@ -82,9 +82,6 @@ public class CarControl {
 
                     while (subtrigger) {
 
-                    //  Просмотр статуса дверей и окон
-                        showDoorsAndWindowsStatus();
-
                         System.out.println("\n1. Open the door ");
                         System.out.println("2. Close the door  ");
                         System.out.println("3. Open/close the door ");
@@ -97,21 +94,69 @@ public class CarControl {
                         choice = DataReader.readIntNumber();
                         switch (choice) {
                             case 1:
+                                System.out.print("\nWhat NUMBER of door to open  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.openTheDoor(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 2:
+                                System.out.print("\nWhat NUMBER of door to close  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.closeTheDoor(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 3:
+                                System.out.print("\nWhat NUMBER of door to open/close  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.openOrCloseTheDoor(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 4:
+                                System.out.print("\nWhat NUMBER of window to open  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.openTheWindow(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 5:
+                                System.out.print("\nWhat NUMBER of window to close  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.closeTheWindow(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 6:
+                                System.out.print("\nWhat NUMBER of window to open/close  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOut(choice)) { break;}
+
+                                choice--;
+                                car.openOrCloseTheWindow(choice);
+                                car.showStatusDoorAndWindow(choice);
                                 break;
                             case 7:      //  Свободные цифры пусть тоже участвуют в показе информации
                             case 8:
                             case 9:
-                                showDoorsAndWindowsStatus();              //  Просмотр статуса дверей и окон
+                                car.showAllDoorsAndWindowsStatus();      //  Просмотр статуса дверей и окон
                                 DataReader.pressEnterKeyToContinue();
                                 break;
                             case 0:
@@ -317,12 +362,25 @@ public class CarControl {
         return numberOfDoors;
     }
 
-    public void showDoorsAndWindowsStatus() {
 
-        int counter = car.getNumberOfDoors();
+    private boolean checkOut(int choice) {
 
-        for (int i = 0; i < counter; i++) {                           //  Просмотр состояния дверей и окон
-            car.door[i].showStatusTheDoorAndTheWindow(i); }
+        if (choice > car.getNumberOfDoors()) {
+            System.out.println("\nУ нас нет так много дверей!");
+            System.out.println("Их в этой модели машины всего  " + car.getNumberOfDoors());
+            return false;
+        }
+        if (choice == 0) {
+            System.out.print("\nНу, хоть одна дверь у машины должна же быть!  На планете Земля так принято... :) ");
+            return false;
+        }
+        if (choice <= 0) {
+            System.out.println();
+            System.out.println(Message.ARE_YOU_SURE);
+            System.out.print("Где вы видели такую машину?!  У этой двери самые обычные, и находятся на обычных местах.");
+            return false;
+        }
+        return true;
     }
 
 
