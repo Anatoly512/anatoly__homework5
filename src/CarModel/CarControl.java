@@ -27,6 +27,7 @@ public class CarControl {
 
         boolean trigger = true;
         boolean subtrigger = true;
+        int realNumberOfWheels;
         int choice;
 
         while (trigger) {
@@ -68,7 +69,7 @@ public class CarControl {
             System.out.println("2.  Wheels (tires) ");
             System.out.println("3.  Passengers ");
             System.out.println("4.  Speed (engine) ");
-            System.out.println("5.  Wheels (set and remove)  ");
+            System.out.println("5.  Wheels (add and remove)  ");
             System.out.println("6.  Show all info about car ");
 
 
@@ -218,7 +219,7 @@ public class CarControl {
                             case 7:
                             case 8:
                             case 9:
-                                int realNumberOfWheels = car.getNumberOfWheels();
+                                realNumberOfWheels = car.getNumberOfWheels();
                                 for (int i = 0; i < realNumberOfWheels; i++) {
 
                                     System.out.print("\nStatus of wheel # " + (i+1) + " : ");
@@ -245,8 +246,8 @@ public class CarControl {
                         System.out.println("1.  Add 1 passenger ");
                         System.out.println("2.  Sub 1 passenger ");
                         System.out.println("3.  Empty the car ");
-                        System.out.println("4.  Show passenger capacity ");
-                        System.out.println("5.  Change passenger capacity");
+                        System.out.println("4.  Change passenger capacity");
+                        System.out.println("5.  Show passenger capacity ");
                         System.out.println("0.  Return to main menu ");
 
                         System.out.println("  Current number of passengers  : " + car.getCurrentNumberOfPassengers());
@@ -266,11 +267,15 @@ public class CarControl {
                                 car.subAllPassengers();
                                 break;
                             case 4:
-                                System.out.println("  Passenger capacity of this car  : " + car.getPassengerCapacity());
-                                break;
-                            case 5:
                                 System.out.print("  Please, enter new passenger capacity of this car  : ");
                                 car.setPassengerCapacity(DataReader.readIntNumber());
+                                break;
+                            case 5:         //  Свободные цифры пусть тоже участвуют в показе информации
+                            case 6:
+                            case 7:
+                            case 8:
+                            case 9:
+                                System.out.println("  Passenger capacity of this car  : " + car.getPassengerCapacity());
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -320,31 +325,70 @@ public class CarControl {
                     break;
 
                 case 5:
-                    System.out.println("\nWheels (set and remove) menu ! ");
+                    System.out.println("\nWheels (add and remove) menu ! ");
 
                     while (subtrigger) {
-                        System.out.println("\n1. ");
-                        System.out.println("2. ");
-                        System.out.println("3. ");
-                        System.out.println("4. ");
-                        System.out.println("5. ");
+                        System.out.println("\n1.  Remove X wheels");
+                        System.out.println("2.  Remove all wheels");
+                        System.out.println("3.  Add X new wheels ");
+                        System.out.println("4.  Show wheel # ");
+                        System.out.println("5.  Show all wheels");
                         System.out.println("0.  Return to main menu ");
+
+                        System.out.println("  Current number of wheels  :  " + car.getNumberOfWheels());
 
                         choice = DataReader.readIntNumber();
                         switch (choice) {
                             case 1:
+                                System.out.print("\nHow much wheels to remove  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                realNumberOfWheels = car.getNumberOfWheels();
+
+                              //  if ( ) { break;}
+
+                                car.setNumberOfWheels(realNumberOfWheels - choice);
                                 break;
                             case 2:
+                                car.setNumberOfWheels(0);
+                                System.out.println("\nНу вот, первая в мире модель автомобиля совершенно без колес ! :) ");
+                                System.out.println("Антигравитация - вот наше будущее!!!  :) :) ");
                                 break;
+
                             case 3:
+                                System.out.print("\nHow much wheels to add  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                realNumberOfWheels = car.getNumberOfWheels();
+
+                              //  if ( ) { break;}
+
+                                car.setNumberOfWheels(realNumberOfWheels + choice);
                                 break;
                             case 4:
+                                System.out.print("\nWhat number of WHEEL to show  :  ");
+                                choice = DataReader.readIntNumber();
+
+                                if (!checkOutNumberOfTires(choice)) { break;}   // здесь приравнены номера колес и шин
+
+                                choice--;    //  Нумерация массива начинается с 0
+                                System.out.print("\nStatus of wheel (tire) # " + (choice+1) + " :  ");
+                                System.out.println(((int) (car.getWheelTireIntegrity(choice) * 100 )) + "% ");
                                 break;
                             case 5:           //  Свободные цифры пусть тоже участвуют в показе информации
                             case 6:
                             case 7:
                             case 8:
                             case 9:
+                                realNumberOfWheels = car.getNumberOfWheels();
+                                for (int i = 0; i < realNumberOfWheels; i++) {
+
+                                    System.out.print("\nStatus of wheel (tire) # " + (i+1) + " :  ");
+                                    System.out.print(((int) (car.getWheelTireIntegrity(i) * 100 )) + "% ");
+                                }
+
+                                System.out.println();
+                                DataReader.pressEnterKeyToContinue();
                                 break;
                             case 0:
                                 subtrigger = false;
@@ -431,9 +475,14 @@ public class CarControl {
     private int checkOutTireValueToWipe(int choice) {
 
         if ((choice > 100) || (choice < 0))  {
-            System.out.println("\nЧто вы хотите сделать с шиной??");
-            System.out.println("Мы уже поняли что она вам не нравится... :) ");
+            System.out.println("\nЧто-о-о вы хотите сделать с шиной??");
+            System.out.println("Мы уже поняли, что она вам не нравится... :) ");
         }
+
+        if (choice == 0) {
+            System.out.println("И зачем было отрывать нас от кофе? :) ");
+        }
+
         if (choice > 100) { choice = 100; }
         if (choice < 0) { choice = 0; }
 
@@ -459,6 +508,7 @@ public class CarControl {
         }
         return true;
     }
+
 
 
 /* //  Проверка работы массива колес

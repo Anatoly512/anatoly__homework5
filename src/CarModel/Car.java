@@ -289,28 +289,20 @@ public class Car {
 
 
     public boolean getStatusDoor(int number) {
-
         return this.door[number].getStatusDoor();
-
     }
 
     public boolean getStatusWindow(int number) {
-
         return this.door[number].getStatusWindow();
-
     }
 
 
     public String getStringStatusDoor(int number) {
-
         return this.door[number].getStringStatusDoor();
-
     }
 
     public String getStringStatusWindow(int number) {
-
         return this.door[number].getStringStatusWindow();
-
     }
 
 
@@ -319,7 +311,16 @@ public class Car {
     }
 
     public double getWheelTireIntegrity(int number) {
-        return this.wheel[number].getTireIntegrity();
+        try
+        {
+            return this.wheel[number].getTireIntegrity();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Знаете, похоже у нас отвалилось это колесо по дороге !");
+            System.out.println("Попробуйте ездить чуть помедленнее! :) ");
+            return 0.00;
+        }
     }
 
     public void changeWheelTireToNewOne(int number) {
@@ -373,9 +374,15 @@ public class Car {
 
         if (this.currentNumberOfPassengers > this.passengerCapacity) {
             this.currentNumberOfPassengers = this.passengerCapacity;
-            int a = (int) (Math.random() * (4-2) ) + 2;
-            System.out.print("Пришлось высадить часть пассажиров. ");
-            System.out.println("Мы оставили им запасной аккумулятор и " + a + " гаечных ключа.");
+            int a = (int) (Math.random() * 2)  + 2;
+            if (this.currentNumberOfPassengers == 0) {
+                System.out.print("Пришлось выкинуть всех пассажиров, включая водителя. ");
+                System.out.println("Что хорошо, у них есть домкрат и " + a + " гаечных ключа.");
+            }
+            else {
+                System.out.print("Пришлось высадить часть пассажиров. ");
+                System.out.println("Мы оставили им запасной аккумулятор и " + a + " гаечных ключа.");
+            }
         }
     }
 
