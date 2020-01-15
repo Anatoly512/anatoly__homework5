@@ -421,13 +421,6 @@ public class Car {
     }
 
 
-    public String getStringDateOfManufacture() {
-
-        return this.DateOfManufacture;
-
-    }
-
-
     public int getMaxSpeed() {
         return this.maxSpeed;
     }
@@ -503,9 +496,15 @@ public class Car {
     }
 
 
+    public String getStringDateOfManufacture() {
+        return this.DateOfManufacture;
+    }
+
+
     public String getEngineType() {
         return this.EngineType;
     }
+
 
     public void setEngineType(String EngineType) {
 

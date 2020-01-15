@@ -290,12 +290,19 @@ public class CarControl {
                 case 4:
                     System.out.println("\nSpeed (engine) menu ! ");
 
+                  // //  * показать текущую скорость
+                  //  Изменить текущую скорость
+                  //  Вычислить текущую возможную максимальную скорость (Максимальная скорость равна 0 если в машине нет ни одного пассажира)
+                  //  Узнать тип двигателя
+                  //  Сменить тип двигателя
+                  //  Показать всю информацию по скорости
+
                     while (subtrigger) {
-                        System.out.println("\n1. ");
-                        System.out.println("2. ");
-                        System.out.println("3. ");
-                        System.out.println("4. ");
-                        System.out.println("5. ");
+                        System.out.println("\n1.  ");
+                        System.out.println("2.  ");
+                        System.out.println("3.  ");
+                        System.out.println("4.  ");
+                        System.out.println("5.  ");
                         System.out.println("0.  Return to main menu ");
 
                         choice = DataReader.readIntNumber();
@@ -342,10 +349,18 @@ public class CarControl {
                             case 1:
                                 System.out.print("\nHow much wheels to remove  :  ");
                                 choice = DataReader.readIntNumber();
+                                if (choice < 0) {
+                                    choice = -(choice);    //  На случай ввода отрицательного числа
+                                }                          //  оно преобразуется в обычное
 
                                 realNumberOfWheels = car.getNumberOfWheels();
 
-                              //  if ( ) { break;}
+                                if ((realNumberOfWheels - choice) <= 0 ) {
+                                        System.out.println("\nМы не можем себе даже вообразить подобную машину!");
+                                        System.out.println("Но мы поняли, что колеса вам не нужны! :) ");
+                                        car.setNumberOfWheels(0);
+                                        break;
+                                }
 
                                 car.setNumberOfWheels(realNumberOfWheels - choice);
                                 break;
@@ -358,21 +373,32 @@ public class CarControl {
                             case 3:
                                 System.out.print("\nHow much wheels to add  :  ");
                                 choice = DataReader.readIntNumber();
+                                if (choice < 0) {
+                                    choice = -(choice);    //  На случай ввода отрицательного числа
+                                }                          //  оно преобразуется в обычное
 
                                 realNumberOfWheels = car.getNumberOfWheels();
 
-                              //  if ( ) { break;}
+                                if ((realNumberOfWheels + choice) > 100 ){
+                                System.out.println("\nИлон Маск, это ты?!  :) ");
+                                System.out.println("У нас в автомастерской нашлось всего 100 колес! ");
+                                car.setNumberOfWheels(100);
+                                break;
+                                }
 
                                 car.setNumberOfWheels(realNumberOfWheels + choice);
                                 break;
                             case 4:
                                 System.out.print("\nWhat number of WHEEL to show  :  ");
                                 choice = DataReader.readIntNumber();
+                                if (choice < 0) {
+                                    choice = -(choice);    //  На случай ввода отрицательного числа
+                                }                          //  оно преобразуется в обычное
 
                                 if (!checkOutNumberOfTires(choice)) { break;}   // здесь приравнены номера колес и шин
 
                                 choice--;    //  Нумерация массива начинается с 0
-                                System.out.print("\nStatus of wheel (tire) # " + (choice+1) + " :  ");
+                                System.out.print("\nStatus of wheel (tire) # " + (choice+1) + " : ");
                                 System.out.println(((int) (car.getWheelTireIntegrity(choice) * 100 )) + "% ");
                                 break;
                             case 5:           //  Свободные цифры пусть тоже участвуют в показе информации
@@ -383,7 +409,7 @@ public class CarControl {
                                 realNumberOfWheels = car.getNumberOfWheels();
                                 for (int i = 0; i < realNumberOfWheels; i++) {
 
-                                    System.out.print("\nStatus of wheel (tire) # " + (i+1) + " :  ");
+                                    System.out.print("\nStatus of wheel (tire) # " + (i+1) + " : ");
                                     System.out.print(((int) (car.getWheelTireIntegrity(i) * 100 )) + "% ");
                                 }
 
