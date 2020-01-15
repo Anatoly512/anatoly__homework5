@@ -24,6 +24,7 @@ public class Message {
         public static final String SPEED_POSSIBLE = "Максимальная скорость которую ваши шины позволяют набрать : ";
         public static final String SPEED_KM = " км/ч";
 
+        public static final String DATE_OF_MANUFACTURE = "15 January 2020";
         public static final String UNKNOWN_DATE = "Unknown date of manufacture";
 
         public static final String ENGINE_USUAL = "V8";

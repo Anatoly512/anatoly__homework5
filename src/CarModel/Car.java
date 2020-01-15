@@ -21,7 +21,7 @@ public class Car {
 
     Car(int numberOfDoors) {
         this.numberOfDoors = numberOfDoors;
-        this.DateOfManufacture = Message.UNKNOWN_DATE;
+        this.DateOfManufacture = Message.DATE_OF_MANUFACTURE;
         this.passengerCapacity = 10;
         this.EngineType = Message.ENGINE_USUAL;
         this.door = new CarDoor[numberOfDoors];
