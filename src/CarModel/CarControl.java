@@ -303,35 +303,31 @@ public class CarControl {
                             System.out.println("\nСейчас скорость равна 0, так как нет водителя.");
                         }
                         else {
-
                             realSpeedCurrent = car.getMaxSpeedPossible();
 
                             if (car.getCurrentSpeed() > 0) {
                                 if (car.getCurrentSpeed() > realSpeedCurrent) {
                                     car.setCurrentSpeed(realSpeedCurrent);        //  Сеттер выводит скорость на экран
                                 }
+                            } else {
+                                if (car.getCurrentSpeed() < 0) {
+                                    if (car.getCurrentSpeed() < -(realSpeedCurrent)) {
+                                        car.setCurrentSpeed(-(realSpeedCurrent));      //  Сеттер выводит скорость на экран
+                                    }
+                                } else {
+                                        System.out.println("  Current speed  : " + car.getCurrentSpeed() + " km/h ");
+                                       }
+                                  }
                             }
-                            if (car.getCurrentSpeed() < 0) {
-                                if (car.getCurrentSpeed() < -(realSpeedCurrent)) {
-                                    car.setCurrentSpeed(-(realSpeedCurrent));      //  Сеттер выводит скорость на экран
-                                }
-                            }
-                              //  Здесь дублируется вывод скорости на экран, надо бы что-то с этим сделать
-                            System.out.println("  Current speed  : " + car.getCurrentSpeed() + " km/h ");
-                            if (car.getCurrentSpeed() < 0) {
-                                System.out.println("(Если что, вы едете назад)");
-                            }
-                        }
 
                         choice = DataReader.readIntNumber();
                         switch (choice) {
                             case 1:
                                 System.out.print("\nSet this car speed  :  ");
-                                choice = DataReader.readIntNumber();      //  Переменная choice просто свободна
+                                choice = DataReader.readIntNumber();
                                 car.setCurrentSpeed(choice);
                                 break;
                             case 2:
-
                                 if (car.getCurrentNumberOfPassengers() == 0) {
                                     choice = car.getMaxSpeedPossible();  //  Нужно просто запустить геттер, там есть проверка
                                 }
@@ -345,6 +341,29 @@ public class CarControl {
                                 System.out.println("разгоняется до 100 км за " + car.getAccelerationTimeTo100km() + " сек. ");
                                 break;
                             case 4:
+                                System.out.println("\nВаш двигатель  :  " + car.getEngineType());
+                                System.out.println("Выберите тип двигателя для установки : ");
+                                System.out.println("1.  Обычный двигатель  " + Message.ENGINE_USUAL);
+                                System.out.println("2.  Формула-1  " + Message.ENGINE_SPORTCAR);
+                                System.out.println("3.  Двигатель к танку Leopard-2  " + Message.ENGINE_TANK);
+
+                                choice = DataReader.readIntNumber();
+                                if (choice == 1) {
+                                    car.setEngineType(Message.ENGINE_USUAL);
+                                } else {
+                                    if (choice == 2) {
+                                        car.setEngineType(Message.ENGINE_SPORTCAR);
+                                        }
+                                    else {
+                                        if (choice == 3) {
+                                            car.setEngineType(Message.ENGINE_TANK);
+                                        }
+                                        else {
+                                            System.out.println("\nДвигатель от космического корабля?!?!  Он будет у нас только на следующей неделе.");
+                                            System.out.println("А пока попробуйте выбрать из тех, что есть.");
+                                        }
+                                    }
+                                }
                                 break;
                             case 5:           //  Свободные цифры пусть тоже участвуют в показе информации
                             case 6:

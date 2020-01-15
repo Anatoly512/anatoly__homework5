@@ -528,7 +528,7 @@ public class Car {
 
     public void setEngineType(String EngineType) {
 
-        switch (EngineType) {
+        switch (EngineType) {              //  Проверка на корректность переданного аргумента
             case Message.ENGINE_USUAL:
                 break;
             case Message.ENGINE_SPORTCAR:
@@ -558,8 +558,10 @@ public class Car {
                 break;
         }
                 this.currentSpeed = 0;   //  Смена двигателя требует остановки машины
-    }
 
+        System.out.println("\nПоздравляем!  Теперь с новым двигателем  " + getEngineType());
+        System.out.println("ваша машина разгоняется до 100 км за " + getAccelerationTimeTo100km() + " сек. ");
+    }
 
 }
 
