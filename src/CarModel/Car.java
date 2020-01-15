@@ -434,23 +434,32 @@ public class Car {
 
         if (currentSpeed > getMaxSpeed()) {
             currentSpeed = maxSpeedPossible;
+
+            if (!(getCurrentNumberOfPassengers() == 0)) {    //  Проверка, есть ли водитель за рулем
             System.out.println(Message.SPEED_SORRY);
             System.out.print(Message.SPEED_MAX + this.maxSpeed + Message.SPEED_KM);
             System.out.println(Message.SPEED_FORWARD_BACK);
+            }
         }
         else {
             if (currentSpeed < 0) {  // Здесь нужно ограничить отрицательную скорость теми же значениями
                 currentSpeed = -(currentSpeed);
                 if (currentSpeed > getMaxSpeed()) {
                     currentSpeed = maxSpeedPossible;
-                    System.out.println(Message.SPEED_SORRY);
-                    System.out.print(Message.SPEED_MAX + this.maxSpeed + Message.SPEED_KM);
-                    System.out.println(Message.SPEED_FORWARD_BACK);
+
+                    if (!(getCurrentNumberOfPassengers() == 0)) {    //  Проверка, есть ли водитель за рулем
+                        System.out.println(Message.SPEED_SORRY);
+                        System.out.print(Message.SPEED_MAX + this.maxSpeed + Message.SPEED_KM);
+                        System.out.println(Message.SPEED_FORWARD_BACK);
+                    }
                 }
                 if (currentSpeed > maxSpeedPossible) {
                     currentSpeed = maxSpeedPossible;
-                    System.out.println(Message.SPEED_TIRES);
-                    System.out.println(Message.SPEED_POSSIBLE + (-maxSpeedPossible) + Message.SPEED_KM);
+
+                    if (!(getCurrentNumberOfPassengers() == 0)) {   //  Проверка, есть ли водитель за рулем
+                        System.out.println(Message.SPEED_TIRES);
+                        System.out.println(Message.SPEED_POSSIBLE + (-maxSpeedPossible) + Message.SPEED_KM);
+                    }
                 }
                 currentSpeed = -(currentSpeed);
             }
@@ -458,13 +467,19 @@ public class Car {
 
         if (currentSpeed > maxSpeedPossible)
         {
+            if (!(getCurrentNumberOfPassengers() == 0)) {     //  Проверка, есть ли водитель за рулем
             System.out.println(Message.SPEED_TIRES);
             System.out.println(Message.SPEED_POSSIBLE + maxSpeedPossible + Message.SPEED_KM);
-
+            }
             currentSpeed = maxSpeedPossible;
         }
 
-        System.out.println(Message.SPEED_CURRENT + currentSpeed + Message.SPEED_KM);
+        if (!(getCurrentNumberOfPassengers() == 0)) {     //  Проверка, есть ли водитель за рулем
+        System.out.println(Message.SPEED_CURRENT + currentSpeed + Message.SPEED_KM); }
+
+        if (currentSpeed < 0) {
+            System.out.println("(Если что, вы едете назад)");
+        }
 
         this.currentSpeed = currentSpeed;
 
@@ -480,6 +495,11 @@ public class Car {
 
         this.maxSpeedPossible = (int) (findMaxWipedTire() * this.maxSpeed);
 
+        if (getCurrentNumberOfPassengers() == 0) {
+            System.out.println("Сейчас максимально возможная скорость равна 0, так как нет водителя.");
+            System.out.println("А будь кто-то за рулем, эта машинка смогла бы выжать до " + this.maxSpeedPossible + " км/ч ! ");
+            return 0;
+        }
         return this.maxSpeedPossible;
     }
 

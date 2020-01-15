@@ -28,6 +28,7 @@ public class CarControl {
         boolean trigger = true;
         boolean subtrigger = true;
         int realNumberOfWheels;
+        int realSpeedCurrent;
         int choice;
 
         while (trigger) {
@@ -290,28 +291,58 @@ public class CarControl {
                 case 4:
                     System.out.println("\nSpeed (engine) menu ! ");
 
-                  // //  * показать текущую скорость
-                  //  Изменить текущую скорость
-                  //  Вычислить текущую возможную максимальную скорость (Максимальная скорость равна 0 если в машине нет ни одного пассажира)
-                  //  Узнать тип двигателя
-                  //  Сменить тип двигателя
-                  //  Показать всю информацию по скорости
-
                     while (subtrigger) {
-                        System.out.println("\n1.  ");
-                        System.out.println("2.  ");
-                        System.out.println("3.  ");
-                        System.out.println("4.  ");
-                        System.out.println("5.  ");
+                        System.out.println("\n1.  Change current speed ");
+                        System.out.println("2.  Show max possible speed ");
+                        System.out.println("3.  Show type of engine ");
+                        System.out.println("4.  Change type of engine");
+                        System.out.println("5.  Show all info ");
                         System.out.println("0.  Return to main menu ");
+
+                        if (car.getCurrentNumberOfPassengers() == 0) {
+                            System.out.println("\nСейчас скорость равна 0, так как нет водителя.");
+                        }
+                        else {
+
+                            realSpeedCurrent = car.getMaxSpeedPossible();
+
+                            if (car.getCurrentSpeed() > 0) {
+                                if (car.getCurrentSpeed() > realSpeedCurrent) {
+                                    car.setCurrentSpeed(realSpeedCurrent);        //  Сеттер выводит скорость на экран
+                                }
+                            }
+                            if (car.getCurrentSpeed() < 0) {
+                                if (car.getCurrentSpeed() < -(realSpeedCurrent)) {
+                                    car.setCurrentSpeed(-(realSpeedCurrent));      //  Сеттер выводит скорость на экран
+                                }
+                            }
+                              //  Здесь дублируется вывод скорости на экран, надо бы что-то с этим сделать
+                            System.out.println("  Current speed  : " + car.getCurrentSpeed() + " km/h ");
+                            if (car.getCurrentSpeed() < 0) {
+                                System.out.println("(Если что, вы едете назад)");
+                            }
+                        }
 
                         choice = DataReader.readIntNumber();
                         switch (choice) {
                             case 1:
+                                System.out.print("\nSet this car speed  :  ");
+                                choice = DataReader.readIntNumber();      //  Переменная choice просто свободна
+                                car.setCurrentSpeed(choice);
                                 break;
                             case 2:
+
+                                if (car.getCurrentNumberOfPassengers() == 0) {
+                                    choice = car.getMaxSpeedPossible();  //  Нужно просто запустить геттер, там есть проверка
+                                }
+                                else {
+                                    System.out.println("\nMax possibe speed for this car :  " + car.getMaxSpeedPossible() + " km/h ");
+                                }
                                 break;
                             case 3:
+                                System.out.println("\nCar engine  :  " + car.getEngineType());
+                                System.out.print("С этим двигателем машина ");
+                                System.out.println("разгоняется до 100 км за " + car.getAccelerationTimeTo100km() + " сек. ");
                                 break;
                             case 4:
                                 break;
@@ -320,6 +351,20 @@ public class CarControl {
                             case 7:
                             case 8:
                             case 9:
+                                System.out.println("\nТип двигателя  :  " + car.getEngineType());
+                                System.out.print("С этим двигателем машина ");
+                                System.out.println("разгоняется до 100 км за " + car.getAccelerationTimeTo100km() + " сек. ");
+                                if (car.getCurrentNumberOfPassengers() == 0) {
+                                    choice = car.getMaxSpeedPossible();  //  Нужно просто запустить геттер, там есть проверка
+                                }
+                                else {
+                                    System.out.println("Max possibe speed for this car :  " + car.getMaxSpeedPossible() + " km/h ");
+                                    System.out.println("Current speed  : " + car.getCurrentSpeed() + " km/h ");
+                                    if (car.getCurrentSpeed() < 0) {
+                                        System.out.println("(Если что, вы едете назад)");
+                                    }
+                                }
+                                DataReader.pressEnterKeyToContinue();
                                 break;
                             case 0:
                                 subtrigger = false;
