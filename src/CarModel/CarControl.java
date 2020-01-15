@@ -495,11 +495,32 @@ public class CarControl {
                 case 8:
                 case 9:
                 case 0:
-                    //  Show all info about car
+                    //  Show all info
+                    System.out.println("\nDate of manufacture the car  :  " + Message.DATE_OF_MANUFACTURE);
 
-                    System.out.println("\nShow all info about car ");
+                    System.out.println("Number of doors  :  " + car.getNumberOfDoors());
+                    System.out.println("Number of wheels  :  " + car.getNumberOfWheels());
+                    System.out.print("Наиболее стертая шина  :  ");
+                    System.out.print(car.findMaxWipedTire() + "  (");
+                    System.out.println(((int) (car.findMaxWipedTire() * 100 )) + ")% ");
 
+                    System.out.println("\n Current number of passengers  : " + car.getCurrentNumberOfPassengers());
+                    System.out.println(" Passenger capacity of this car  : " + car.getPassengerCapacity());
 
+                    System.out.println("\nТип двигателя  :  " + car.getEngineType());
+                    System.out.print("С этим двигателем машина ");
+                    System.out.println("разгоняется до 100 км за " + car.getAccelerationTimeTo100km() + " сек. ");
+                    if (car.getCurrentNumberOfPassengers() == 0) {
+                        choice = car.getMaxSpeedPossible();  //  Нужно просто запустить геттер, там есть проверка
+                    }
+                    else {
+                        System.out.println("Max possibe speed for this car :  " + car.getMaxSpeedPossible() + " km/h ");
+                        System.out.println("Current speed  : " + car.getCurrentSpeed() + " km/h ");
+                        if (car.getCurrentSpeed() < 0) {
+                            System.out.println("(Если что, вы едете назад)");
+                        }
+                    }
+                    DataReader.pressEnterKeyToContinue();
                     break;
 
                 default:
